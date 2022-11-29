@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>/</loc>
+    <lastmod>2022-11-29T23:45:32+05:30</lastmod>
+  </url><url>
+    <loc>/posts/cruxipher/</loc>
+    <lastmod>2022-11-29T22:48:10+05:30</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2022-11-29T22:48:10+05:30</lastmod>
+  </url><url>
+    <loc>/posts/shell/</loc>
+    <lastmod>2022-11-29T22:47:59+05:30</lastmod>
+  </url><url>
+    <loc>/posts/dualboot/</loc>
+    <lastmod>2022-11-29T21:27:14+05:30</lastmod>
+  </url><url>
+    <loc>/members/</loc>
+    <lastmod>2022-11-29T20:49:27+05:30</lastmod>
+  </url><url>
+    <loc>/apply/</loc>
+    <lastmod>2022-11-29T20:49:22+05:30</lastmod>
+  </url><url>
+    <loc>/about/</loc>
+    <lastmod>2022-11-29T20:36:48+05:30</lastmod>
+  </url><url>
+    <loc>/categories/</loc>
+  </url><url>
+    <loc>/series/</loc>
+  </url><url>
+    <loc>/tags/</loc>
+  </url>
+</urlset>

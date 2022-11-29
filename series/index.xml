@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Series on Society for Open Software</title>
+    <link>/series/</link>
+    <description>Recent content in Series on Society for Open Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2022 [Sarthak Shah](https://untyped.ml) &amp; [SOS Members](https://github.com/orgs/BITS-SOS/people). [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)</copyright><atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>
