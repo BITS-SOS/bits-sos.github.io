@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Society for Open Software</title>
+    <link>/posts/</link>
+    <description>Recent content in Posts on Society for Open Software</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <copyright>© 2022 [Sarthak Shah](https://untyped.ml) &amp; [SOS Members](https://github.com/orgs/BITS-SOS/people). [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <lastBuildDate>Tue, 29 Nov 2022 22:48:10 +0530</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cruxipher</title>
+      <link>/posts/cruxipher/</link>
+      <pubDate>Tue, 29 Nov 2022 22:48:10 +0530</pubDate>
+      
+      <guid>/posts/cruxipher/</guid>
+      <description>For ATMOS 2022, we worked with Crux on Cruxipher - a CTF event that tested software development, cryptography and UNIX skills.</description>
+    </item>
+    
+    <item>
+      <title>Shell Basics</title>
+      <link>/posts/shell/</link>
+      <pubDate>Tue, 29 Nov 2022 22:47:59 +0530</pubDate>
+      
+      <guid>/posts/shell/</guid>
+      <description>The Shell Basics workshop was conducted on the first of October. The workshop covered the basics of using shell interfaces such as bash and zsh.
+Poster for the workshop:
+(Made in GIMP, as usual) </description>
+    </item>
+    
+    <item>
+      <title>Dualbooting Workshop</title>
+      <link>/posts/dualboot/</link>
+      <pubDate>Tue, 29 Nov 2022 21:27:14 +0530</pubDate>
+      
+      <guid>/posts/dualboot/</guid>
+      <description>Our very first event as a society was a workshop on dualbooting Linux with Windows.
+It took place on 19th June, 2022 at F204 in the OAB.
+Here is a clip from the event: This was the poster for the event: (Made in GIMP, of course) </description>
+    </item>
+    
+  </channel>
+</rss>
