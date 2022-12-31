@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Society for Open Software</title>
-    <link>bits-sos.ml/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Society for Open Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2022 [Sarthak Shah](https://untyped.ml) &amp; [SOS Members](https://github.com/orgs/BITS-SOS/people). [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)</copyright><atom:link href="bits-sos.ml/categories/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>© 2022 [Sarthak Shah](https://untyped.ml) &amp; [SOS Members](https://github.com/orgs/BITS-SOS/people). [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)</copyright><atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

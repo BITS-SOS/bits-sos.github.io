@@ -2,34 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>bits-sos.ml/</loc>
+    <loc>/</loc>
     <lastmod>2022-11-29T23:45:32+05:30</lastmod>
   </url><url>
-    <loc>bits-sos.ml/posts/cruxipher/</loc>
+    <loc>/posts/cruxipher/</loc>
     <lastmod>2022-11-29T22:48:10+05:30</lastmod>
   </url><url>
-    <loc>bits-sos.ml/posts/</loc>
+    <loc>/posts/</loc>
     <lastmod>2022-11-29T22:48:10+05:30</lastmod>
   </url><url>
-    <loc>bits-sos.ml/posts/shell/</loc>
+    <loc>/posts/shell/</loc>
     <lastmod>2022-11-29T22:47:59+05:30</lastmod>
   </url><url>
-    <loc>bits-sos.ml/posts/dualboot/</loc>
+    <loc>/posts/dualboot/</loc>
     <lastmod>2022-11-29T21:27:14+05:30</lastmod>
   </url><url>
-    <loc>bits-sos.ml/members/</loc>
+    <loc>/members/</loc>
     <lastmod>2022-11-29T20:49:27+05:30</lastmod>
   </url><url>
-    <loc>bits-sos.ml/apply/</loc>
+    <loc>/apply/</loc>
     <lastmod>2022-11-29T20:49:22+05:30</lastmod>
   </url><url>
-    <loc>bits-sos.ml/about/</loc>
+    <loc>/about/</loc>
     <lastmod>2022-11-29T20:36:48+05:30</lastmod>
   </url><url>
-    <loc>bits-sos.ml/categories/</loc>
+    <loc>/categories/</loc>
   </url><url>
-    <loc>bits-sos.ml/series/</loc>
+    <loc>/series/</loc>
   </url><url>
-    <loc>bits-sos.ml/tags/</loc>
+    <loc>/tags/</loc>
   </url>
 </urlset>
