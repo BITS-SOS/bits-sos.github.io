@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Dual Booting</title>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/blood.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="./tux.png" data-background-size="50px" data-background-repeat="repeat" data-background-opacity="0.2"><h1>Dual Booting</h1><h1></h1>
+</section>
+
+<section>
+<section id="slide-orga444790" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orga444790">About us</h2>
+<p>
+Society for Open Software (SOS) is a newly formed society with the purpose of increasing awareness of free and open source software and boost student engagement with the open source community.
+</p>
+
+<div id="org36b0ebd" class="figure">
+<p><img src="./sos.png" alt="sos.png" width="30%" height="30%" />
+</p>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org49e728c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org49e728c">Link to Slides</h2>
+<p>
+<a href="https://bits-sos.ml/slides/dualboot.html">https://bits-sos.ml/slides/dualboot.html</a>
+</p>
+
+
+<div id="orgf44349b" class="figure">
+<p><img src="./qr_code.png" alt="qr_code.png" width="50%" height="50%" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgce69637" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgce69637">Introduction</h2>
+
+<div id="org7c3aca6" class="figure">
+<p><img src="./tux.png" alt="tux.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgf549fa1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgf549fa1">What is dual booting?</h3>
+<p>
+Dual booting is having two operating systems running bare metal on the same computer
+</p>
+</section>
+<section id="slide-org5be6d70" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org5be6d70">Why should you dual boot?</h3>
+<ol>
+<li>Compartmentalization of tasks</li>
+<li>Ability to run applications exclusive to a given OS</li>
+
+</ol>
+</section>
+<section id="slide-orgea2d8d8" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgea2d8d8">Goals of this workshop</h3>
+<ol>
+<li>Learning how to dual boot</li>
+<li>Picking the right distro for you</li>
+<li>Supervised installation</li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-org110cb4f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org110cb4f">Dual-booting Linux and Windows</h2>
+
+<div id="org9641802" class="figure">
+<p><img src="./matter.png" alt="matter.png" width="80%" height="80%" />
+</p>
+</div>
+</section>
+<section id="slide-org3b58766" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org3b58766">This workshop will focus on dual-booting Linux alongside Windows</h3>
+<p>
+OSX users are welcome too.
+@Pal will be helping Mac users install Asahi Linux
+</p>
+</section>
+<section id="slide-orgde57db1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgde57db1">But&#x2026; why?</h3>
+
+<div id="org44ef0bc" class="figure">
+<p><img src="./why.jpeg" alt="why.jpeg" />
+</p>
+</div>
+</section>
+<section id="slide-orgdd80dde" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgdd80dde">Windows PATHs are a nightmare to set and manage</h4>
+<p>
+To set up programming-related software, users often have to modify Window's PATH. This is widely agreed to be notoriously difficult, not to mention time-consuming. Package managers automatically set PATH variables when required on Linux, and it is much easier to do so manually when the need arises.
+</p>
+</section>
+<section id="slide-org435de05" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org435de05">Windows has no package manager</h4>
+<p>
+Package managers are very useful for getting free software with one click. This includes applications such as VLC, Blender, Audacity etc. and programming software such as Python, GCC, Clang etc.
+</p>
+</section>
+<section id="slide-org23bbd4c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org23bbd4c">Pop!<sub>OS</sub></h4>
+
+<div id="org4903ffd" class="figure">
+<p><img src="./shop.png" alt="shop.png" width="80%" height="80%" />
+</p>
+</div>
+</section>
+<section id="slide-org42f3547" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org42f3547">Mint</h4>
+
+<div id="org064ad52" class="figure">
+<p><img src="./manager.png" alt="manager.png" width="70%" height="70%" />
+</p>
+</div>
+</section>
+<section id="slide-org64abcc6" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org64abcc6">Linux cannot run games and CAD software reliably</h4>
+<p>
+If you wish to run any recent multiplayer game or AutoCAD, you will not be able to do so with Linux. Multiplayer games use kernel-level anticheat software, which just won't work on top of a translation layer like WINE. AutoCAD is too dependent on the .NET framework to work properly with WINE.
+</p>
+</section>
+<section id="slide-org6b5ec58" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org6b5ec58">However&#x2026;</h4>
+<p>
+Thanks to the SteamDeck, a lot of games have been ported to Linux. You <i>can</i> game on Linux, but it just won't support 100% of games.
+</p>
+
+<div id="org5fd62d9" class="figure">
+<p><img src="./deck.png" alt="deck.png" width="50%" height="50%" />
+</p>
+</div>
+</section>
+<section id="slide-org26321d7" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org26321d7">I do not require the latest AAA games or CAD software. Should I just use Linux?</h3>
+</section>
+<section id="slide-org94b66e1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org94b66e1">Yes!</h3>
+<p>
+Linux has comparable or better performance in most tasks outside of those. Gaming on Linux has been getting better thanks to the SteamDeck incentivizing developers to make their games work on Linux.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org68e8532" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org68e8532">Distributions</h2>
+
+<div id="org70c74fc" class="figure">
+<p><img src="./distros.png" alt="distros.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgb43dcdd" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgb43dcdd">What is linux?</h3>
+<p>
+Linux is a kernel, the core component of the Operating System which manages interactions between the OS and hardware. When we say "Linux", it refers to a GNU system consisting of various components, including the linux kernel.
+</p>
+</section>
+<section id="slide-org852fa91" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org852fa91">What is a linux distribution?</h3>
+<p>
+A distribution is an operating system made from a set of software, which includes the linux kernel alongside an init system, coreutils and often a package manager.
+</p>
+</section>
+<section id="slide-org81dfc07" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org81dfc07">Parts of a distribution</h3>
+
+<div id="orgdd11477" class="figure">
+<p><img src="./3Dtux.png" alt="3Dtux.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgab3c788" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgab3c788">init system</h3>
+<p>
+The init is the first process started by the system, and it continues running as a daemon till shutdown. If the kernel can't start it, it will result in a kernel panic. The init system is responsible for supervising processes and starting and stopping processes critical to the system.
+</p>
+</section>
+<section id="slide-orgf0dc5ad" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgf0dc5ad">SystemD</h4>
+<p>
+SystemD is the most commonly used init system. It comes with a bunch of utilities like a journaling system, which makes it very convenient to use. This, however, has drawn some criticism as it is doing more than what an init system should be doing, which is against the UNIX philosophy. It also starts slightly slower on older machines.
+</p>
+</section>
+<section id="slide-orgaf82549" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgaf82549">OpenRC (Gentoo)</h4>
+<p>
+OpenRC is often used by distros that wish not to implement SystemD. It is fast, lightweight and it does its job. Unfortunately, it does not provide daemon monitoring tools which are necessary for restarting crashed programs.
+</p>
+</section>
+<section id="slide-org6e21c3f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org6e21c3f">Runit (Void)</h4>
+<p>
+Runit quite similar to OpenRC, but it also provides daemon monitoring tools. This makes it a favorite of many, as it couples the minimalism of OpenRC and the convenience of SystemD.
+</p>
+</section>
+<section id="slide-org6247b3b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org6247b3b">Package manager</h3>
+<p>
+A package manager is an application that simplifies and automates the process of installing, upgrading and uninstalling software. Instead of downloading multiple EXEs and going through a long installation process for each and every application you want to use, you can install applications through a simple to use app store similar to Android/iOS.
+</p>
+</section>
+<section id="slide-org321a8ee" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org321a8ee">apt (debian-based distros)</h4>
+<p>
+apt (and its derivatives) are used by debian and distros that derive from it. It is a simple package manager.
+</p>
+</section>
+<section id="slide-org413c31b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org413c31b">pacman (arch-based distros)</h4>
+<p>
+pacman is arch linux' package manager. It is much faster than apt, and provides more up-to-date packages. When coupled with an AUR manager like yay, it is the best package manager for normal use.
+</p>
+</section>
+<section id="slide-orge0b0e89" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orge0b0e89">portage</h4>
+<p>
+Portage is Gentoo's package manager. It takes a source-based approach for most packages, and lets you customize every little detail of them prior to compilation.
+</p>
+</section>
+<section id="slide-orgd612cad" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgd612cad">XBPS</h4>
+<p>
+XBPS is Void's package manager. It's fast, lightweight and lets you switch between source-based and binary-based approaches.
+</p>
+</section>
+<section id="slide-org8fbf5f6" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org8fbf5f6">nix and guix</h4>
+<p>
+Nix and Guix are functional package managers, that take a functional approach to package management: i.e. they treat packages as pure functions of their dependencies. This eliminates any side effects, and solves the problem of dependency hell.
+</p>
+</section>
+<section id="slide-orgd932672" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgd932672">Release style</h3>
+
+<div id="org5feb95b" class="figure">
+<p><img src="./IBM_tux.jpg" alt="IBM_tux.jpg" width="50%" height="50%" />
+</p>
+</div>
+</section>
+<section id="slide-orgf17e7de" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgf17e7de">Point release</h4>
+<p>
+Point-release distros release stable versions of multiple packages once in a while. This makes the system stable and less prone to failure. The disadvantages of this approach are that packages are a version or two behind the latest and that installing the latest software for development purposes can get difficult.
+</p>
+</section>
+<section id="slide-orgc5a5783" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgc5a5783">Rolling release</h4>
+<p>
+Rolling-release distros ship new packages <i>as soon as they are released.</i> This means that you will be using the latest and greatest versions of your favorite software hot off the press. The disadvantages of this approach are that you can get stability issues and experience dependency hell if you install too many packages.
+</p>
+</section>
+<section id="slide-org4f0d16f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org4f0d16f">Desktop Environments</h3>
+<p>
+Desktop Environments are bundles of GUI programs that provide a full-desktop experience. These contain a Window Manager, various desktop utilities like taskbars and start menus and often come with GUI applications such as a notepad or a calendar.
+</p>
+</section>
+<section id="slide-org8f7e9e7" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org8f7e9e7">KDE</h4>
+<p>
+KDE is a highly polished, cool-looking Desktop Environments. It comes loaded with tons of features and very slick animations. It uses qt for theming, which makes it look absolutely gorgeous. Windows 10 and 11 somewhat resemble KDE.
+</p>
+</section>
+<section id="slide-org8f7e9e7-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="org6183095" class="figure">
+<p><img src="./plasma.png" alt="plasma.png" />
+</p>
+</div>
+</section>
+<section id="slide-org8f7e9e7-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="orgcc38be4" class="figure">
+<p><img src="./kde1.png" alt="kde1.png" />
+</p>
+</div>
+</section>
+<section id="slide-org8f7e9e7-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="orged8c438" class="figure">
+<p><img src="./kde2.png" alt="kde2.png" />
+</p>
+</div>
+</section>
+<section id="slide-org99d7a65" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org99d7a65">XFCE</h4>
+<p>
+XFCE is a fast, lightweight and highly customizable Desktop Environment. All its components are swappable and modular. It uses GTK3 for theming, and with a bit of tweaking provides a very comfortable experience. It somewhat resembles Windows 7.
+</p>
+</section>
+<section id="slide-org99d7a65-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="org57b4b8d" class="figure">
+<p><img src="./xfce1.png" alt="xfce1.png" />
+</p>
+</div>
+</section>
+<section id="slide-org99d7a65-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="orgc7178d1" class="figure">
+<p><img src="./xfce2.png" alt="xfce2.png" />
+</p>
+</div>
+</section>
+<section id="slide-org99d7a65-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="org67feaca" class="figure">
+<p><img src="./xfce3.png" alt="xfce3.png" />
+</p>
+</div>
+</section>
+<section id="slide-org0d58c23" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org0d58c23">GNOME</h4>
+<p>
+GNOME is perhaps the most commonly used Desktop Environment, as it is the default DE of Ubuntu. It provides a polished user interface that is quite different from Windows' UI. It uses GTK4 for theming. 
+</p>
+</section>
+<section id="slide-org0d58c23-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="org2becf3e" class="figure">
+<p><img src="./gnome1.png" alt="gnome1.png" />
+</p>
+</div>
+</section>
+<section id="slide-org0d58c23-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="org02f9491" class="figure">
+<p><img src="./gnome2.jpeg" alt="gnome2.jpeg" />
+</p>
+</div>
+</section>
+<section id="slide-org0d58c23-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="orgeaca9bb" class="figure">
+<p><img src="./gnome3.webp" alt="gnome3.webp" />
+</p>
+</div>
+</section>
+<section id="slide-org29a1db8" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org29a1db8">Cinnamon, MATE, LXDE, LXQT etc..</h4>
+<p>
+These Desktop Environments are less commonly used, and I would not recommend using them as a beginner since any issues will be hard to debug. Cinnamon and MATE are forks of GNOME3 and GNOME2 respectively, and provide a more traditional computing experience.
+</p>
+</section>
+<section id="slide-org29a1db8-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="org1ce7982" class="figure">
+<p><img src="./cinnamon.png" alt="cinnamon.png" />
+</p>
+</div>
+</section>
+<section id="slide-org29a1db8-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="org4b018eb" class="figure">
+<p><img src="./mate.png" alt="mate.png" />
+</p>
+</div>
+</section>
+<section id="slide-org29a1db8-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="org799a3cb" class="figure">
+<p><img src="./lxde.png" alt="lxde.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgd8cb21b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgd8cb21b">Recommended Distros</h2>
+<div class="outline-text-2" id="text-orgd8cb21b">
+</div>
+</section>
+<section id="slide-org504317e" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org504317e">Rolling Release</h3>
+<div class="outline-text-3" id="text-org504317e">
+</div>
+</section>
+<section id="slide-orgfdfda99" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgfdfda99">Arch Linux</h4>
+<p>
+Arch Linux is perhaps the most widely-used rolling release distro. It boasts a humongous software repository and a very helpful wiki that can resolve nearly all your problems. Its only demerit is that it does not provide a GUI for installation, which can be a bit daunting for beginners. 
+</p>
+
+
+<div id="org450e236" class="figure">
+<p><img src="./arch.svg" alt="arch.svg" class="org-svg" />
+</p>
+</div>
+</section>
+<section id="slide-org4385646" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org4385646">EndeavourOS</h4>
+<p>
+EndeavourOS is Arch Linux repackaged with an excellent GUI installer. It comes with multiple themed desktop environments and WMs, and provides you with all the benefits of Arch minus the arduous installation and configuration process.
+</p>
+
+
+<div id="org258dfea" class="figure">
+<p><img src="./end_wh.png" alt="end_wh.png" />
+</p>
+</div>
+</section>
+<section id="slide-org8657481" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org8657481">Void Linux</h4>
+<p>
+Void Linux comes with the super fast Runit init system and the reliable XBPS package manager. It has a TUI installer that simplifies the installation and provides most of the packages you will find necessary. Void is ideal for older machines that have low specs or still use hard drives.
+</p>
+
+
+<div id="org1380e9f" class="figure">
+<p><img src="./void.svg" alt="void.svg" class="org-svg" />
+</p>
+</div>
+</section>
+<section id="slide-org32094a8" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org32094a8">Point Release</h3>
+<div class="outline-text-3" id="text-org32094a8">
+</div>
+</section>
+<section id="slide-org13b2bb3" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org13b2bb3">Mint</h4>
+<p>
+Mint is a very simple to use fork of Ubuntu and it comes with Cinnamon, MATE and XFCE. This distro provides a similar experience to using Windows and is highly recommended for older PCs.
+</p>
+
+
+<div id="org608569e" class="figure">
+<p><img src="./mint.png" alt="mint.png" width="30%" height="30%" />
+</p>
+</div>
+</section>
+<section id="slide-orgc1b8a35" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgc1b8a35">Pop!<sub>OS</sub></h4>
+<p>
+Pop!<sub>OS</sub> is System76's linux distro, which is aimed at gamers, STEM students and creative professionals. It provides a neat and user-friendly UI.
+</p>
+
+
+<div id="orgebcb3eb" class="figure">
+<p><img src="./pop.svg" alt="pop.svg" class="org-svg" width="30%" height="30%" />
+</p>
+</div>
+</section>
+<section id="slide-org3ca1a8b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org3ca1a8b">Fedora</h4>
+<p>
+Fedora is essentially a development version of Red Hat Enterprise Linux. It implements cutting-edge technology like Wayland and Pipewire while offering the same stability as Ubuntu variants.
+</p>
+
+
+<div id="org62de7a6" class="figure">
+<p><img src="./fedora.png" alt="fedora.png" />
+</p>
+</div>
+</section>
+<section id="slide-org4be36b1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org4be36b1">Advanced Users</h3>
+<div class="outline-text-3" id="text-org4be36b1">
+</div>
+</section>
+<section id="slide-org2abcc7c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org2abcc7c">Gentoo</h4>
+<p>
+Gentoo is a very interesting distro which pushes the user to compile everything from scratch, <i>including the linux kernel</i>. The user is encouraged to set USE Flags to control every bit of every single package and keep bloat to a minimum. It's the perfect distro for intermediate users with powerful computers.
+</p>
+
+
+<div id="orgfec0bc6" class="figure">
+<p><img src="./gentoo.svg" alt="gentoo.svg" class="org-svg" width="20%" height="20%" />
+</p>
+</div>
+</section>
+<section id="slide-org2e39b0c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org2e39b0c">Slackware</h4>
+<p>
+Slackware is one of the oldest linux distros still in use. It aims to provide a more UNIX-like experience compared to other linux distros. Installing packages on it is a bit harder than other distros, and while the defaults are user-friendly a beginner might struggle to use it.
+</p>
+
+
+<div id="orgcd4d74c" class="figure">
+<p><img src="./slackware-silver.png" alt="slackware-silver.png" />
+</p>
+</div>
+</section>
+<section id="slide-org7e89aeb" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org7e89aeb">NixOS</h4>
+<p>
+NixOS is a linux distribution built atop the Nix package manager. Nix is a functional package manager, which makes it immune to problems like dependency hell. It is at the forefront of modern package management, and provides a bunch of nifty features such as being able to define your entire OS in a single file and then being able to reproduce it exactly on another PC just by copying over that file. Functional package management, however, does not obey the Linux Filesystem Hierarchy Standard, which leads to problems. It also has a complicated CLI.
+</p>
+</section>
+<section id="slide-orgf72ea4a" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgf72ea4a">Guix System with nonguix</h4>
+<p>
+Guix System is built on top of the GNU Guix package manager, which is a functional package manager similar to Nix with the main difference being that Guix uses Guile Scheme, GNU's official scripting language, instead of a DSL like Nix. It provides all the benefits of NixOS and has a much simpler CLI, but the disadvantages with Guix are that the official repositories package <i>only</i> libre software and that its userbase is quite small. 
+</p>
+</section>
+<section id="slide-orgf72ea4a-split" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+
+<div id="orgb0e584d" class="figure">
+<p><img src="./guix.svg" alt="guix.svg" class="org-svg" />
+</p>
+</div>
+
+
+<div id="org06d3851" class="figure">
+<p><img src="./nix.svg" alt="nix.svg" class="org-svg" width="30%" height="30%" />
+</p>
+</div>
+</section>
+<section id="slide-org53ae804" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org53ae804">Consider Alternatives to These</h3>
+<div class="outline-text-3" id="text-org53ae804">
+</div>
+</section>
+<section id="slide-org128dbe1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org128dbe1">Ubuntu</h4>
+<p>
+Canonical is known for creating strange in-house solutions instead of contribution to existing projects in the linux community. This has lead to Ubuntu featuring a lot of strange quirks that can sometimes interfere with normal work. For example, firefox is packaged as a Snap in the latest version of Ubuntu. <span class="underline">We would recommend using Pop!<sub>OS</sub> instead</span>.
+</p>
+</section>
+<section id="slide-orgb531c86" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgb531c86">Debian</h4>
+<p>
+Debian is a more server-oriented distro, hence using something like Mint or Arch for a personal computer would be recommended instead.
+</p>
+</section>
+<section id="slide-org7ea2e96" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org7ea2e96">Kali Linux</h4>
+<p>
+Kali Linux is just Ubuntu with some pentesting tools pre-installed. Unless you wish to learn pentesting, Kali Linux is not recommended.
+</p>
+</section>
+<section id="slide-orgd3e8150" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgd3e8150">Manjaro</h4>
+<p>
+Manjaro is a fork of Arch that arbitrarily holds back updates for the sake of "stability". It ends up providing neither the stability of a point-release distro, nor the latest packages of a rolling-release distro. Using vanilla Arch or EndeavourOS instead is recommended. 
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org174c498" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org174c498">Procedure Overview</h2>
+<div class="outline-text-2" id="text-org174c498">
+</div>
+</section>
+<section id="slide-org24e1cca" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org24e1cca">Preparation</h3>
+<ol>
+<li>Setting up a LiveCD with Balena</li>
+<li>Disabling Fast Startup</li>
+<li>Disabling BitLocker</li>
+<li>Shrinking partitions</li>
+<li>Backing up important data</li>
+
+</ol>
+</section>
+<section id="slide-org1db5c03" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org1db5c03">Booting into the LiveCD</h3>
+<ol>
+<li>Disabling SecureBoot</li>
+<li>Booting into LiveCD</li>
+<li>Installing the distro into empty space</li>
+
+</ol>
+</section>
+<section id="slide-orgcd5e3c6" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgcd5e3c6">Post-install</h3>
+<ol>
+<li>Fixing the clock</li>
+<li>Checking everything works</li>
+<li>Moving programming-related files to Linux</li>
+
+</ol>
+</section>
+</section>
+<section>
+<section id="slide-orgc02cad2" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgc02cad2">Preparation</h2>
+<div class="outline-text-2" id="text-orgc02cad2">
+</div>
+</section>
+<section id="slide-orgcce7d98" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgcce7d98">Setting up a LiveCD with Rufus</h3>
+<p>
+We will download our selected distro's LiveCD from its website, and then use <a href="https://www.balena.io/etcher">Balena Etcher</a> to burn it onto a USB drive of a size around 4 GB or greater.
+</p>
+
+
+<div id="org8cf2d27" class="figure">
+<p><img src="./etcher.png" alt="etcher.png" width="50%" height="50%" />
+</p>
+</div>
+</section>
+<section id="slide-orgabade2f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgabade2f">Disabling Fast Startup</h3>
+<p>
+Go to Windows Settings -&gt; Choose what the power buttons do and then scroll down to Shut down settings and uncheck the box for "Turn on fast startup".
+</p>
+
+
+<div id="org797ffd8" class="figure">
+<p><img src="./fastboot.webp" alt="fastboot.webp" />
+</p>
+</div>
+</section>
+<section id="slide-orgf39119b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgf39119b">Disabling BitLocker</h3>
+<p>
+Control Panel -&gt; System and Security -&gt; Bitlocker Drive Encryption
+Click on "Turn Off Bitlocker"
+Just to be safe, make sure to note down your Bitlocker key.
+</p>
+
+
+<div id="org4ca1f38" class="figure">
+<p><img src="./bitlocker.png" alt="bitlocker.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgc75e313" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgc75e313">Shrinking partitions</h3>
+<p>
+Open diskmgmt.msc and shrink the C:/ or D:/ drive by around 64 GB.
+</p>
+
+
+<div id="org0fb700d" class="figure">
+<p><img src="./diskmgmt.webp" alt="diskmgmt.webp" />
+</p>
+</div>
+</section>
+<section id="slide-org5d5e761" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org5d5e761">Backing up important data</h3>
+<p>
+Create a backup of important data on an external drive.
+<b>We will not be responsible for any loss of data, so please back it up!</b>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org11f9705" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org11f9705">Booting into the LiveCD</h2>
+<div class="outline-text-2" id="text-org11f9705">
+</div>
+</section>
+<section id="slide-org6438737" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org6438737">Disabling SecureBoot</h3>
+<p>
+Boot and press [F2] to enter BIOS. Go to [Security] tab &gt; [Default Secure boot on] and set as [Disabled]. Go to [Save &amp; Exit] tab &gt; [Save Changes] and select [Yes].
+</p>
+
+
+<div id="org3d4122c" class="figure">
+<p><img src="./secureboot.jpg" alt="secureboot.jpg" />
+</p>
+</div>
+</section>
+<section id="slide-org6d3e4a5" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org6d3e4a5">Booting into the LiveCD</h3>
+<p>
+Mash the "Boot options" button (usually F10) and pick your USB device as the boot drive.
+</p>
+
+
+<div id="org4c772fe" class="figure">
+<p><img src="./boot_menu.webp" alt="boot_menu.webp" width="50%" height="50%" />
+</p>
+</div>
+</section>
+<section id="slide-orgaf8765f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgaf8765f">Installing the distro into empty space</h3>
+<p>
+When the distro's installer asks you where you want to install it, select the empty space we created. The bootloader should point to the main drive.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgc3eccb3" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgc3eccb3">Post-install</h2>
+<div class="outline-text-2" id="text-orgc3eccb3">
+</div>
+</section>
+<section id="slide-orgde169f9" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgde169f9">Checking everything works</h3>
+<p>
+Boot into Windows, check that all your data is there, check that you can boot into all OSes, etc.
+</p>
+</section>
+<section id="slide-org0f0a879" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org0f0a879">Fixing the clock</h3>
+<p>
+The system clock will point to the wrong time, because of fundamental differences in how linux and windows read time from the system clock. Windows stores the time as local time, while linux stores it as UTC.
+Launch cmd as Administrator and run this command (it is a single line):
+</p>
+<pre  class="example" >
+reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
+/v RealTimeIsUniversal /t REG_DWORD /d 1
+</pre>
+</section>
+<section id="slide-org82249f7" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org82249f7">Moving programming-related files to Linux</h3>
+<p>
+Mount your Windows drive in Linux using a package called ntfs-3g, and then copy or move over your programming related files to Linux. 
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>

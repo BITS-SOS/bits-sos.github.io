@@ -1,0 +1,74 @@
+#+TITLE:BITS-SOS
+#+SUBTITLE: RAF Orientation, Day 3
+#+OPTIONS: num:nil
+#+REVEAL_THEME: blood
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+REVEAL_TITLE_SLIDE: <h1 class="title">%t</h1><em>%s</em><br><br>%a<br>%d
+#+reveal_title_slide_background: ./tux.png
+#+reveal_title_slide_background_repeat: repeat
+#+reveal_title_slide_background_size: 50px
+#+reveal_title_slide_background_opacity: 0.2
+#+reveal_default_slide_background: ./sos.png
+#+reveal_default_slide_background_position: 1% 96%
+#+reveal_default_slide_background_size: 100px
+#+reveal_default_slide_background_opacity: 0.4
+
+* Hacker Culture
+[[./hack.png]]
+** MIT's Model Railroad Club
+#+ATTR_HTML: :width 75% :height 75%
+[[./railroad-club.jpeg]]
+** MIT's Artificial Intelligence Lab
+#+ATTR_HTML: :width 65% :height 65%
+[[./mit-ai-lab.jpg]]
+** Free Software Movement
+#+ATTR_HTML: :width 75% :height 75%
+[[./gnutux.jpg]]
+** RMS
+#+ATTR_HTML: :width 75% :height 75%
+[[./rms.jpg]]
+** Linus
+#+ATTR_HTML: :width 75% :height 75%
+[[./linus.jpg]]
+** Present Day - BPHC
+#+ATTR_HTML: :width 75% :height 75%
+[[./rms-cover.jpg]]
+* The Missing Open Source Culture
+As you might have noticed, Linux adoption is very low on campus among students and faculty alike!
+As a premier Technological Institute, we should have a much, much higher rate of Linux adoption.
+* Why do we need it?
+[[./3Dtux.png]]
+** GNU/Linux provides a better environment for programming.
+#+ATTR_HTML: :width 50% :height 50%
+[[./IBM_tux.jpg]]
+*** Windows PATHs are a nightmare to set and manage
+To set up programming-related software, users often have to modify Window's PATH. This is widely agreed to be notoriously difficult, not to mention time-consuming. Package managers automatically set PATH variables when required on Linux, and it is much easier to do so manually when the need arises.
+*** Windows has no package manager
+Package managers are very useful for getting free software with one click. This includes applications such as VLC, Blender, Audacity etc. and programming software such as Python, GCC, Clang etc.
+*** Pop!_OS' Package Manager
+#+ATTR_HTML: :width 80% :height 80%
+[[./shop.png]]
+** Freedom
+#+ATTR_HTML: :width 80% :height 80%
+[[./freedom.png]]
+* Enter SOS
+Society for Open Software (SOS) is a newly formed society with the purpose of increasing awareness of free and open source software and boost student engagement with the open source community.
+#+ATTR_HTML: :width 30% :height 30%
+[[./sos.png]]
+* What we do
+#+ATTR_HTML: :width 75% :height 75%
+[[./sos_thumb.jpg]]
+** Workshops
+#+ATTR_HTML: :width 75% :height 75%
+[[./workshops.png]]
+** Community for Linux users
+Because of the low adoption of GNU/Linux on campus, users might run into issues they need help with. In such cases, a strong Linux User community is essential! We aim to provide such a community through bi-weekly sessions and online groups.
+* Link to these slides
+#+ATTR_HTML: :width 50% :height 50%
+[[./sos-raf.png]]
+* Contacts
+
+| President    | Secretary        |
+|--------------+------------------|
+| Sarthak Shah | Soumitra Shewale |
+| 8767059061   | 6309481575       |

@@ -1,0 +1,17 @@
+#+TITLE:SOS Meet 4/1
+#+OPTIONS: num:nil
+#+REVEAL_THEME: blood
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+reveal_title_slide_background: ./tux.png
+#+reveal_title_slide_background_repeat: repeat
+#+reveal_title_slide_background_size: 50px
+#+reveal_title_slide_background_opacity: 0.2
+#+reveal_default_slide_background: ./sos.png
+#+reveal_default_slide_background_position: 1% 96%
+#+reveal_default_slide_background_size: 100px
+#+reveal_default_slide_background_opacity: 0.4
+* Introductions
+* Agenda
+1. The dualbooting workshop
+2. Inductions 
+3. Our own distro (long-term project)
