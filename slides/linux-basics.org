@@ -1,0 +1,583 @@
+#+title: Linux Basics
+#+OPTIONS: num:nil
+#+REVEAL_THEME: blood
+#+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
+#+reveal_title_slide_background: ./tuxtile.png
+#+reveal_title_slide_background_repeat: repeat
+#+reveal_title_slide_background_size: 200px
+#+reveal_title_slide_background_opacity: 0.2
+#+reveal_default_slide_background: ./sos.png
+#+reveal_default_slide_background_position: 1% 96%
+#+reveal_default_slide_background_size: 100px
+#+reveal_default_slide_background_opacity: 0.4
+
+* Link to Slides
+[[https://bits-sos.ml/slides/linux-basics.html]]
+
+#+ATTR_HTML: :width 50% :height 50%
+[[./qr-code-linux-basics.png]]
+* Before We Start
+Get the same setup:
+#+BEGIN_SRC bash
+  wget -r https://bits-sos.ml/resources/linux-basics
+  cd linux-basics
+#+END_SRC
+OR
+#+BEGIN_SRC bash
+  git clone https://github.com/bits-sos/linux-basics
+  cd linux-basics
+#+END_SRC
+* Some Absolute Basics
+[[./tux.png]]
+** Files
+** Users and Groups
+** Permissions
+* History of Terminals
+#+ATTR_HTML: :width 50% :height 50%
+[[./VT100.jpg]]
+** 1960s and 1970s - Mainframes
+- Mainframes were big computers a lot of people accessed at the same time
+- People used "terminals" to access these mainframes and perform tasks on them
+- Earliest form was teletype machine (tty)
+- Video terminals came around later, but were expensive
+  - They came with color output, fancy cursor movements and other features
+** Personal Computers
+- Terminal Emulators simulated video terminals on pesonal computers
+- First ever terminal emulator was on the PDP-11
+** Shells
+- User interface that lets users interact with the OS through a CLI
+- First shell was Multic's MIDAS
+- "Thompson shell" or sh came with UNIX
+- Bourne shell, C shell, Korn shell came around later
+- Linux comes with Bourne Again Shell (bash)
+- ZSH and Fish are other popular options
+* Navigation
+** pwd
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id pwd
+#+BEGIN_SRC bash
+  pwd
+#+END_SRC
+** pwd
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id pwd
+#+BEGIN_SRC bash
+  pwd
+  -> /home/<user>/linux-basics
+#+END_SRC
+** cd
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cd
+#+BEGIN_SRC bash
+  cd dir
+  pwd
+  cd ..
+  pwd
+#+END_SRC
+** cd
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cd
+#+BEGIN_SRC bash
+  cd dir
+  pwd
+  -> /home/<user>/linux-basics/dir
+  cd ..
+  pwd
+  -> /home/<user>/linux-basics
+#+END_SRC
+** ls
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id ls
+#+BEGIN_SRC bash
+  ls dir
+#+END_SRC
+** ls
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id ls
+#+BEGIN_SRC bash
+  ls dir
+  -> file.txt
+#+END_SRC
+** tree
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tree
+#+BEGIN_SRC bash
+  tree dir
+#+END_SRC
+** tree
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tree
+#+BEGIN_SRC bash
+  tree dir
+  dir
+  └── file.txt
+
+  1 directory, 1 file
+#+END_SRC
+** mv
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id mv
+#+BEGIN_SRC bash
+  mv hello.c hello2.c
+  ls
+#+END_SRC
+** mv
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id mv
+#+BEGIN_SRC bash
+  mv hello.c hello2.c
+  ls
+  -> dir hello2.c ...
+#+END_SRC
+** mkdir
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id mkdir
+#+BEGIN_SRC bash
+  mkdir dir/dir2
+  ls dir
+#+END_SRC
+** mkdir
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id mkdir
+#+BEGIN_SRC bash
+  mkdir dir/dir2
+  ls dir
+  -> file.txt dir2
+#+END_SRC
+** touch
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id touch
+#+BEGIN_SRC bash
+  touch dir/file2.txt
+  ls dir
+#+END_SRC
+** touch
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id touch
+#+BEGIN_SRC bash
+  touch dir/file2.txt
+  ls dir
+  -> dir2 file.txt file2.txt
+#+END_SRC
+** rm
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id rm
+#+BEGIN_SRC bash
+  rm dir/file2.txt
+  rm -r dir/dir2
+  ls dir
+#+END_SRC
+** rm
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id rm
+#+BEGIN_SRC bash
+  rm dir/file2.txt
+  rm -r dir/dir2
+  ls dir
+  -> file.txt
+#+END_SRC
+** cp
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cp
+#+BEGIN_SRC bash
+  cp dir/file.txt dir/file2.txt
+  ls dir
+#+END_SRC
+** cp
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cp
+#+BEGIN_SRC bash
+  cp dir/file.txt dir/file2.txt
+  ls dir
+  -> file.txt file2.txt
+#+END_SRC
+* Common Commands
+** man
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id pwd
+#+BEGIN_SRC bash
+  man man
+#+END_SRC
+** echo
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id echo
+#+BEGIN_SRC bash
+  echo "Hello, World!"
+#+END_SRC
+** echo
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id echo
+#+BEGIN_SRC bash
+  echo "Hello, World!"
+  -> Hello, World!
+#+END_SRC
+** cat
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cat
+#+BEGIN_SRC bash
+  cat linux-basics.sh
+  #+END_SRC
+** less
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id less
+#+BEGIN_SRC bash
+  less linux-basics.sh
+  #+END_SRC
+** head
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id head
+#+BEGIN_SRC bash
+  head -n 1 linux-basics.sh
+  #+END_SRC
+** head
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id head
+#+BEGIN_SRC bash
+  head -n 1 linux-basics.sh
+  -> #!/usr/bin/bash
+#+END_SRC
+** tail
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tail
+#+BEGIN_SRC bash
+  tail -n 1 linux-basics.sh
+  #+END_SRC
+** tail
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tail
+#+BEGIN_SRC bash
+  tail -n 1 linux-basics.sh
+  -> echo $(expr $STEP + 1) > /tmp/STEP
+#+END_SRC
+** grep
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id grep
+#+BEGIN_SRC bash
+  grep "getopts" *
+  #+END_SRC
+** |
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id |
+#+BEGIN_SRC bash
+  cat linux-basics.sh | grep "bash"
+  #+END_SRC
+** >
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id >
+#+BEGIN_SRC bash
+  echo "ok" > ok.txt
+  #+END_SRC
+** >>
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id >>
+#+BEGIN_SRC bash
+  echo "still ok" >> ok.txt
+  #+END_SRC
+** cut
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cut
+#+BEGIN_SRC bash
+  echo "h e l l o" | cut -d" " -f2
+  #+END_SRC
+** tee
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tee
+#+BEGIN_SRC bash
+  echo "hello" | tee hello.txt
+  #+END_SRC
+** chmod
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id chmod
+#+BEGIN_SRC bash
+  chmod -x linux_basics.sh
+  #+END_SRC
+** chown
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id chown
+#+BEGIN_SRC bash
+  chown -R $user file/dir
+  #+END_SRC
+** chattr
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id chattr
+#+BEGIN_SRC bash
+  sudo chattr +i hello.txt
+#+END_SRC
+** wget
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id wget
+#+BEGIN_SRC bash
+  wget https://www.bits-sos.ml/images/bits_sos.png
+  #+END_SRC
+** curl
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id curl
+#+BEGIN_SRC bash
+  curl https://wttr.in
+  #+END_SRC
+** tar
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tar
+#+BEGIN_SRC bash
+  tar -xvf archive.tar
+  #+END_SRC
+** unzip
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id unzip
+#+BEGIN_SRC bash
+  unzip zipped.zip
+  #+END_SRC
+** find
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id find
+#+BEGIN_SRC bash
+  find . -name "*.sh"
+  #+END_SRC
+** fzf
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id fzf
+#+BEGIN_SRC bash
+  fzf
+  #+END_SRC
+** sleep
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id sleep
+#+BEGIN_SRC bash
+  sleep 3s;
+  #+END_SRC
+** pkill
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id pkill
+#+BEGIN_SRC bash
+  pkill -SIGUSR1 <process>
+  #+END_SRC
+** killall
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id killall
+#+BEGIN_SRC bash
+  killall process
+  #+END_SRC
+** alias
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id alias
+#+BEGIN_SRC bash
+  alias vi="nvim"
+  #+END_SRC
+** function
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id function
+#+BEGIN_SRC bash
+  mkcd() { mkdir $1 && cd $1; }
+#+END_SRC
+* Branching and Looping
+** variables
+#+BEGIN_SRC bash
+w="world"
+echo "hello $w"
+$? -> exit status
+read var
+getopts
+#+END_SRC
+** test
+#+BEGIN_SRC bash
+test expr
+[ expr ]
+[ -f file ]
+[ -z empty_string ]
+[ "stra" != "strb" ]
+[ $x -gt 4 ]
+[[]] -> not really standard, but has neat features like regex matching
+#+END_SRC
+** exit
+#+BEGIN_SRC bash
+exit 0 -> success
+exit 1 -> failure
+#+END_SRC
+** arithmetic
+#+BEGIN_SRC bash
+let "a = 2 + 6/3"
+expr "2 + 6/3"
+$(( 2 + 6/3 ))
+${#w} -> length of str in w
+#+END_SRC
+** if
+#+BEGIN_SRC bash
+  if predicate; then
+      action
+  elif predicate2; then
+      action2
+  else
+      action3
+  fi
+#+END_SRC
+** match case
+#+BEGIN_SRC bash
+  case $i in
+      a)
+          s1
+          ;;
+      b | c)
+          s2
+          ;;
+      d)
+          s3
+          ;;
+      *)
+          s4
+          ;;
+  esac
+#+END_SRC
+** while loop
+#+BEGIN_SRC bash
+  while pred; do
+      something
+  done
+#+END_SRC
+** for loop
+#+BEGIN_SRC bash
+  for i in 1 2 3 4 5; do
+      echo "count: $i"
+  done
+#+END_SRC
+* Examples
+** Remove Prefix
+#+BEGIN_SRC bash
+#!/bin/bash
+
+# This script removes a specified prefix from all files in a directory
+
+read -p "Enter directory name: " dirname
+read -p "Enter prefix to remove: " prefix
+
+# Check if directory exists
+if [ -d "$dirname" ]
+then
+  # Loop through all files in the directory and rename files with prefix removed
+  for file in "$dirname"/*"$prefix"*
+  do
+    # Remove prefix from filename
+    newname=$(echo $file | sed "s/$prefix//")
+    mv "$file" "$newname"
+    echo "File $file renamed to $newname"
+  done
+else
+  echo "Directory $dirname does not exist."
+fi
+#+END_SRC
+
+** Resize Images in a Directory
+#+BEGIN_SRC bash
+#!/bin/bash
+
+echo "Enter the directory path where the images are located: "
+read dir_path
+
+echo "Enter the desired width of the images: "
+read width
+
+for file in $dir_path/*.{jpg,png,jpeg}; do
+  if [ -f "$file" ]; then
+    echo "Resizing $file..."
+    convert "$file" -resize "$width" "$file"
+  fi
+done
+
+echo "All images have been resized to $width pixels wide."
+#+END_SRC
+
+* Task
+Write a script to move all files with the .txt extension to the directory TXT
