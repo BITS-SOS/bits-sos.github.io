@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Linux Basics</title>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/blood.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="./tuxtile.png" data-background-size="200px" data-background-repeat="repeat" data-background-opacity="0.2"><h1>Linux Basics</h1><h1></h1>
+</section>
+
+<section>
+<section id="slide-org0c6aeba" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org0c6aeba">Link to Slides</h2>
+<p>
+<a href="https://bits-sos.ml/slides/linux-basics.html">https://bits-sos.ml/slides/linux-basics.html</a>
+</p>
+
+
+<div id="orgff5687c" class="figure">
+<p><img src="./qr-code-linux-basics.png" alt="qr-code-linux-basics.png" width="50%" height="50%" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgbcbd038" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgbcbd038">Before We Start</h2>
+<p>
+Get the same setup:
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim>wget -r https://bits-sos.ml/resources/linux-basics
+<span style="color: #606590;">cd</span> linux-basics
+</code></pre>
+</div>
+<p>
+OR
+</p>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim>git clone https://github.com/bits-sos/linux-basics
+<span style="color: #606590;">cd</span> linux-basics
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org47e138f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org47e138f">Some Absolute Basics</h2>
+
+<div id="orga64bf5e" class="figure">
+<p><img src="./tux.png" alt="tux.png" />
+</p>
+</div>
+</section>
+<section id="slide-orge65c222" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orge65c222">Files</h3>
+</section>
+<section id="slide-orgd31a3f0" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgd31a3f0">Users and Groups</h3>
+</section>
+<section id="slide-org93ffe59" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org93ffe59">Permissions</h3>
+</section>
+</section>
+<section>
+<section id="slide-org5929a1c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org5929a1c">History of Terminals</h2>
+
+<div id="org26ccfeb" class="figure">
+<p><img src="./VT100.jpg" alt="VT100.jpg" width="50%" height="50%" />
+</p>
+</div>
+</section>
+<section id="slide-orgc5687c1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgc5687c1">1960s and 1970s - Mainframes</h3>
+<ul>
+<li>Mainframes were big computers a lot of people accessed at the same time</li>
+<li>People used "terminals" to access these mainframes and perform tasks on them</li>
+<li>Earliest form was teletype machine (tty)</li>
+<li>Video terminals came around later, but were expensive
+<ul>
+<li>They came with color output, fancy cursor movements and other features</li>
+
+</ul></li>
+
+</ul>
+</section>
+<section id="slide-org2779b3b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org2779b3b">Personal Computers</h3>
+<ul>
+<li>Terminal Emulators simulated video terminals on pesonal computers</li>
+<li>First ever terminal emulator was on the PDP-11</li>
+
+</ul>
+</section>
+<section id="slide-org2b87ed3" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org2b87ed3">Shells</h3>
+<ul>
+<li>User interface that lets users interact with the OS through a CLI</li>
+<li>First shell was Multic's MIDAS</li>
+<li>"Thompson shell" or sh came with UNIX</li>
+<li>Bourne shell, C shell, Korn shell came around later</li>
+<li>Linux comes with Bourne Again Shell (bash)</li>
+<li>ZSH and Fish are other popular options</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgc1f6482" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgc1f6482">Navigation</h2>
+<div class="outline-text-2" id="text-orgc1f6482">
+</div>
+</section>
+<section id="slide-org804c33d" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org804c33d">pwd</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="pwd" ><code trim><span style="color: #606590;">pwd</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org86ec981" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org86ec981">pwd</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="pwd" ><code trim><span style="color: #606590;">pwd</span>
+-&gt; /home/&lt;user&gt;/linux-basics
+</code></pre>
+</div>
+</section>
+<section id="slide-org820c2f8" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org820c2f8">cd</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="cd" ><code trim><span style="color: #606590;">cd</span> dir
+<span style="color: #606590;">pwd</span>
+<span style="color: #606590;">cd</span> ..
+<span style="color: #606590;">pwd</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org1a6e849" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org1a6e849">cd</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="cd" ><code trim><span style="color: #606590;">cd</span> dir
+<span style="color: #606590;">pwd</span>
+-&gt; /home/&lt;user&gt;/linux-basics/dir
+<span style="color: #606590;">cd</span> ..
+<span style="color: #606590;">pwd</span>
+-&gt; /home/&lt;user&gt;/linux-basics
+</code></pre>
+</div>
+</section>
+<section id="slide-org9330fdc" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org9330fdc">ls</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="ls" ><code trim>ls dir
+</code></pre>
+</div>
+</section>
+<section id="slide-org928a9a2" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org928a9a2">ls</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="ls" ><code trim>ls dir
+-&gt; file.txt
+</code></pre>
+</div>
+</section>
+<section id="slide-org9b796d3" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org9b796d3">tree</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="tree" ><code trim>tree dir
+</code></pre>
+</div>
+</section>
+<section id="slide-org5d8db4c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org5d8db4c">tree</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="tree" ><code trim>tree dir
+dir
+&#9492;&#9472;&#9472; file.txt
+
+1 directory, 1 file
+</code></pre>
+</div>
+</section>
+<section id="slide-orgfeb14cd" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgfeb14cd">mv</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="mv" ><code trim>mv hello.c hello2.c
+ls
+</code></pre>
+</div>
+</section>
+<section id="slide-orge8d471c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orge8d471c">mv</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="mv" ><code trim>mv hello.c hello2.c
+ls
+-&gt; dir hello2.c ...
+</code></pre>
+</div>
+</section>
+<section id="slide-org2658754" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org2658754">mkdir</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="mkdir" ><code trim>mkdir dir/dir2
+ls dir
+</code></pre>
+</div>
+</section>
+<section id="slide-org3024a63" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org3024a63">mkdir</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="mkdir" ><code trim>mkdir dir/dir2
+ls dir
+-&gt; file.txt dir2
+</code></pre>
+</div>
+</section>
+<section id="slide-org48a36ee" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org48a36ee">touch</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="touch" ><code trim>touch dir/file2.txt
+ls dir
+</code></pre>
+</div>
+</section>
+<section id="slide-orgaa60212" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgaa60212">touch</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="touch" ><code trim>touch dir/file2.txt
+ls dir
+-&gt; dir2 file.txt file2.txt
+</code></pre>
+</div>
+</section>
+<section id="slide-org8eefc4f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org8eefc4f">rm</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="rm" ><code trim>rm dir/file2.txt
+rm -r dir/dir2
+ls dir
+</code></pre>
+</div>
+</section>
+<section id="slide-orgabb80b1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgabb80b1">rm</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="rm" ><code trim>rm dir/file2.txt
+rm -r dir/dir2
+ls dir
+-&gt; file.txt
+</code></pre>
+</div>
+</section>
+<section id="slide-org7b7ffe6" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org7b7ffe6">cp</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="cp" ><code trim>cp dir/file.txt dir/file2.txt
+ls dir
+</code></pre>
+</div>
+</section>
+<section id="slide-orgb047137" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgb047137">cp</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="cp" ><code trim>cp dir/file.txt dir/file2.txt
+ls dir
+-&gt; file.txt file2.txt
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org6f15d11" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org6f15d11">Common Commands</h2>
+<div class="outline-text-2" id="text-org6f15d11">
+</div>
+</section>
+<section id="slide-org52fb684" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org52fb684">man</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="pwd" ><code trim>man man
+</code></pre>
+</div>
+</section>
+<section id="slide-orgc409778" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgc409778">echo</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="echo" ><code trim><span style="color: #606590;">echo</span> <span style="color: #a0adee;">"Hello, World!"</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-orgb6e2190" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgb6e2190">echo</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="echo" ><code trim><span style="color: #606590;">echo</span> <span style="color: #a0adee;">"Hello, World!"</span>
+-&gt; Hello, World!
+</code></pre>
+</div>
+</section>
+<section id="slide-orgf5dc5ff" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgf5dc5ff">cat</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="cat" ><code trim>cat linux-basics.sh
+</code></pre>
+</div>
+</section>
+<section id="slide-orgd239d8c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgd239d8c">less</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="less" ><code trim>less linux-basics.sh
+</code></pre>
+</div>
+</section>
+<section id="slide-org91844e0" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org91844e0">head</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="head" ><code trim>head -n 1 linux-basics.sh
+</code></pre>
+</div>
+</section>
+<section id="slide-org4ec9377" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org4ec9377">head</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="head" ><code trim>head -n 1 linux-basics.sh
+-&gt; <span style="color: #7078a2;">#</span><span style="color: #505f89;">!/usr/bin/bash</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-orgea6b4a0" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgea6b4a0">tail</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="tail" ><code trim>tail -n 1 linux-basics.sh
+</code></pre>
+</div>
+</section>
+<section id="slide-org56c0248" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org56c0248">tail</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="tail" ><code trim>tail -n 1 linux-basics.sh
+-&gt; echo $<span style="color: #a9f;">(</span><span style="color: #fa8072;">expr $STEP + 1</span><span style="color: #a9f;">)</span> &gt; /tmp/STEP
+</code></pre>
+</div>
+</section>
+<section id="slide-org3d59bd9" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org3d59bd9">grep</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="grep" ><code trim>grep <span style="color: #a0adee;">"getopts"</span> *
+</code></pre>
+</div>
+</section>
+<section id="slide-org54b07b0" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org54b07b0">|</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="|" ><code trim>cat linux-basics.sh | grep <span style="color: #a0adee;">"bash"</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org933609c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org933609c">&gt;</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id=">" ><code trim><span style="color: #606590;">echo</span> <span style="color: #a0adee;">"ok"</span> &gt; ok.txt
+</code></pre>
+</div>
+</section>
+<section id="slide-org0d1d8b5" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org0d1d8b5">&gt;&gt;</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id=">>" ><code trim><span style="color: #606590;">echo</span> <span style="color: #a0adee;">"still ok"</span> &gt;&gt; ok.txt
+</code></pre>
+</div>
+</section>
+<section id="slide-org9d51c4a" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org9d51c4a">cut</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="cut" ><code trim><span style="color: #606590;">echo</span> <span style="color: #a0adee;">"h e l l o"</span> | cut -d<span style="color: #a0adee;">" "</span> -f2
+</code></pre>
+</div>
+</section>
+<section id="slide-org94773f2" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org94773f2">tee</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="tee" ><code trim><span style="color: #606590;">echo</span> <span style="color: #a0adee;">"hello"</span> | tee hello.txt
+</code></pre>
+</div>
+</section>
+<section id="slide-org63124b1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org63124b1">chmod</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="chmod" ><code trim>chmod -x linux_basics.sh
+</code></pre>
+</div>
+</section>
+<section id="slide-orgb2eb4cf" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgb2eb4cf">chown</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="chown" ><code trim>chown -R $<span style="color: #8e8eb8;">user</span> file/dir
+</code></pre>
+</div>
+</section>
+<section id="slide-org407b50a" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org407b50a">chattr</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="chattr" ><code trim>sudo chattr +i hello.txt
+</code></pre>
+</div>
+</section>
+<section id="slide-orgabaa710" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgabaa710">wget</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="wget" ><code trim>wget https://www.bits-sos.ml/images/bits_sos.png
+</code></pre>
+</div>
+</section>
+<section id="slide-orgf8967f7" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgf8967f7">curl</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="curl" ><code trim>curl https://wttr.in
+</code></pre>
+</div>
+</section>
+<section id="slide-orgeca465b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgeca465b">tar</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="tar" ><code trim>tar -xvf archive.tar
+</code></pre>
+</div>
+</section>
+<section id="slide-orgf0e044d" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgf0e044d">unzip</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="unzip" ><code trim>unzip zipped.zip
+</code></pre>
+</div>
+</section>
+<section id="slide-orgf9d1884" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="orgf9d1884">find</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="find" ><code trim>find . -name <span style="color: #a0adee;">"*.sh"</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org86992b3" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org86992b3">fzf</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="fzf" ><code trim>fzf
+</code></pre>
+</div>
+</section>
+<section id="slide-org7be940a" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org7be940a">sleep</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="sleep" ><code trim>sleep 3s;
+</code></pre>
+</div>
+</section>
+<section id="slide-org28e30a6" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org28e30a6">pkill</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="pkill" ><code trim>pkill -SIGUSR1 &lt;process&gt;
+</code></pre>
+</div>
+</section>
+<section id="slide-org71a4402" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org71a4402">killall</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="killall" ><code trim>killall process
+</code></pre>
+</div>
+</section>
+<section id="slide-org00e992b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org00e992b">alias</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="alias" ><code trim><span style="color: #606590;">alias</span> <span style="color: #8e8eb8;">vi</span>=<span style="color: #a0adee;">"nvim"</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org6e582b7" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4" data-auto-animate>
+<h3 id="org6e582b7">function</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   data-id="function" ><code trim><span style="color: #8083be;">mkcd</span><span style="color: #a9f;">()</span> <span style="color: #a9f;">{</span> mkdir $<span style="color: #8e8eb8;">1</span> &amp;&amp; <span style="color: #606590;">cd</span> $<span style="color: #8e8eb8;">1</span>; <span style="color: #a9f;">}</span>
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org07cb6bc" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org07cb6bc">Branching and Looping</h2>
+<div class="outline-text-2" id="text-org07cb6bc">
+</div>
+</section>
+<section id="slide-org4610ee6" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org4610ee6">variables</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim><span style="color: #8e8eb8;">w</span>=<span style="color: #a0adee;">"world"</span>
+<span style="color: #606590;">echo</span> <span style="color: #a0adee;">"hello $w"</span>
+$<span style="color: #8e8eb8;">?</span> -&gt; exit status
+<span style="color: #606590;">read</span> var
+<span style="color: #606590;">getopts</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-orgd20e44f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgd20e44f">test</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim><span style="color: #606590;">test</span> expr
+<span style="color: #a9f;">[</span> expr <span style="color: #a9f;">]</span>
+<span style="color: #a9f;">[</span> -f file <span style="color: #a9f;">]</span>
+<span style="color: #a9f;">[</span> -z empty_string <span style="color: #a9f;">]</span>
+<span style="color: #a9f;">[</span> <span style="color: #a0adee;">"stra"</span> != <span style="color: #a0adee;">"strb"</span> <span style="color: #a9f;">]</span>
+<span style="color: #a9f;">[</span> $<span style="color: #8e8eb8;">x</span> -gt 4 <span style="color: #a9f;">]</span>
+<span style="color: #a9f;">[</span><span style="color: #959;">[]</span><span style="color: #a9f;">]</span> -&gt; not really standard, but has neat features like regex matching
+</code></pre>
+</div>
+</section>
+<section id="slide-orga924b9e" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orga924b9e">exit</h3>
+<p>
+exit 0 -&gt; success
+exit 1 -&gt; failure
+</p>
+</section>
+<section id="slide-org35dc67a" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org35dc67a">arithmetic</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim><span style="color: #606590;">let</span> <span style="color: #a0adee;">"a = 2 + 6/3"</span>
+expr <span style="color: #a0adee;">"2 + 6/3"</span>
+$<span style="color: #a9f;">(</span><span style="color: #959;">(</span><span style="color: #fa8072;"> 2 + 6/3 </span><span style="color: #959;">)</span><span style="color: #a9f;">)</span>
+$<span style="color: #a9f;">{</span>#<span style="color: #8e8eb8;">w</span><span style="color: #a9f;">}</span> -&gt; length of str<span style="color: #aa8da7;"> in</span> w
+</code></pre>
+</div>
+</section>
+<section id="slide-orgca708c8" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgca708c8">if</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim><span style="color: #aa8da7;">if</span> predicate; <span style="color: #aa8da7;">then</span>
+    action
+<span style="color: #aa8da7;">elif</span> predicate2; <span style="color: #aa8da7;">then</span>
+    action2
+<span style="color: #aa8da7;">else</span>
+    action3
+<span style="color: #aa8da7;">fi</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org56c22fa" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org56c22fa">match case</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim><span style="color: #aa8da7;">case</span> $<span style="color: #8e8eb8;">i</span><span style="color: #aa8da7;"> in</span>
+    a)
+        s1
+        ;;
+    b | c)
+        s2
+        ;;
+    d)
+        s3
+        ;;
+    *)
+        s4
+        ;;
+<span style="color: #aa8da7;">esac</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-org14c4251" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org14c4251">while loop</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim><span style="color: #aa8da7;">while</span> pred; <span style="color: #aa8da7;">do</span>
+    something
+<span style="color: #aa8da7;">done</span>
+</code></pre>
+</div>
+</section>
+<section id="slide-orgdd1fc75" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgdd1fc75">for loop</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim><span style="color: #aa8da7;">for</span> i<span style="color: #aa8da7;"> in</span> 1 2 3 4 5; <span style="color: #aa8da7;">do</span>
+    <span style="color: #606590;">echo</span> <span style="color: #a0adee;">"count: $i"</span>
+<span style="color: #aa8da7;">done</span>
+</code></pre>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgffee989" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgffee989">Examples</h2>
+<div class="outline-text-2" id="text-orgffee989">
+</div>
+</section>
+<section id="slide-org7f2a85e" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org7f2a85e">Remove Prefix</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim><span style="color: #7078a2;">#</span><span style="color: #505f89;">!/bin/</span><span style="color: #aa8da7;">bash</span>
+
+<span style="color: #7078a2;"># </span><span style="color: #505f89;">This script removes a specified prefix from all files in a directory</span>
+
+<span style="color: #606590;">read</span> -p <span style="color: #a0adee;">"Enter directory name: "</span> dirname
+<span style="color: #606590;">read</span> -p <span style="color: #a0adee;">"Enter prefix to remove: "</span> prefix
+
+<span style="color: #7078a2;"># </span><span style="color: #505f89;">Check if directory exists</span>
+<span style="color: #aa8da7;">if</span> <span style="color: #a9f;">[</span> -d <span style="color: #a0adee;">"$dirname"</span> <span style="color: #a9f;">]</span>
+<span style="color: #aa8da7;">then</span>
+  <span style="color: #7078a2;"># </span><span style="color: #505f89;">Loop through all files in the directory and rename files with prefix removed</span>
+  <span style="color: #aa8da7;">for</span> file<span style="color: #aa8da7;"> in</span> <span style="color: #a0adee;">"$dirname"</span>/*<span style="color: #a0adee;">"$prefix"</span>*
+  <span style="color: #aa8da7;">do</span>
+    <span style="color: #7078a2;"># </span><span style="color: #505f89;">Remove prefix from filename</span>
+    <span style="color: #8e8eb8;">newname</span>=$<span style="color: #a9f;">(</span><span style="color: #fa8072;">echo $file | sed "s/$prefix//"</span><span style="color: #a9f;">)</span>
+    mv <span style="color: #a0adee;">"$file"</span> <span style="color: #a0adee;">"$newname"</span>
+    <span style="color: #606590;">echo</span> <span style="color: #a0adee;">"File $file renamed to $newname"</span>
+  <span style="color: #aa8da7;">done</span>
+<span style="color: #aa8da7;">else</span>
+  <span style="color: #606590;">echo</span> <span style="color: #a0adee;">"Directory $dirname does not exist."</span>
+<span style="color: #aa8da7;">fi</span>
+</code></pre>
+</div>
+
+</section>
+<section id="slide-org8f979b1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org8f979b1">Resize Images in a Directory</h3>
+<div class="org-src-container">
+
+<pre  class="src src-bash"   ><code trim><span style="color: #7078a2;">#</span><span style="color: #505f89;">!/bin/</span><span style="color: #aa8da7;">bash</span>
+
+<span style="color: #606590;">echo</span> <span style="color: #a0adee;">"Enter the directory path where the images are located: "</span>
+<span style="color: #606590;">read</span> dir_path
+
+<span style="color: #606590;">echo</span> <span style="color: #a0adee;">"Enter the desired width of the images: "</span>
+<span style="color: #606590;">read</span> width
+
+<span style="color: #aa8da7;">for</span> file<span style="color: #aa8da7;"> in</span> $<span style="color: #8e8eb8;">dir_path</span>/*.<span style="color: #a9f;">{</span>jpg,png,jpeg<span style="color: #a9f;">}</span>; <span style="color: #aa8da7;">do</span>
+  <span style="color: #aa8da7;">if</span> <span style="color: #a9f;">[</span> -f <span style="color: #a0adee;">"$file"</span> <span style="color: #a9f;">]</span>; <span style="color: #aa8da7;">then</span>
+    <span style="color: #606590;">echo</span> <span style="color: #a0adee;">"Resizing $file..."</span>
+    convert <span style="color: #a0adee;">"$file"</span> -resize <span style="color: #a0adee;">"$width"</span> <span style="color: #a0adee;">"$file"</span>
+  <span style="color: #aa8da7;">fi</span>
+<span style="color: #aa8da7;">done</span>
+
+<span style="color: #606590;">echo</span> <span style="color: #a0adee;">"All images have been resized to $width pixels wide."</span>
+</code></pre>
+</div>
+
+</section>
+</section>
+<section>
+<section id="slide-org06e95b7" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org06e95b7">Task</h2>
+<p>
+Write a script to move all files with the .txt extension to the directory TXT
+</p>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>
