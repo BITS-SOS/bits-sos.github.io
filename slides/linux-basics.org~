@@ -1,251 +1,596 @@
-#+title: Dual Booting
- #+OPTIONS: num:nil
- #+REVEAL_THEME: blood
+#+title: Linux Basics
+#+OPTIONS: num:nil
+#+REVEAL_THEME: blood
 #+REVEAL_ROOT: https://cdn.jsdelivr.net/npm/reveal.js
-#+reveal_title_slide_background: ./tux.png
+#+reveal_title_slide_background: ./tuxtile.png
 #+reveal_title_slide_background_repeat: repeat
-#+reveal_title_slide_background_size: 50px
+#+reveal_title_slide_background_size: 200px
 #+reveal_title_slide_background_opacity: 0.2
 #+reveal_default_slide_background: ./sos.png
 #+reveal_default_slide_background_position: 1% 96%
 #+reveal_default_slide_background_size: 100px
 #+reveal_default_slide_background_opacity: 0.4
 
-* About us
-Society for Open Software (SOS) is a newly formed society with the purpose of increasing awareness of free and open source software and boost student engagement with the open source community.
-#+ATTR_HTML: :width 30% :height 30%
-[[./sos.png]]
-
 * Link to Slides
-;; change
-[[https://untyped.ml/slides/dualboot.html]]
-[[https://bits-sos.ml/slides/dualboot.html]]
+[[https://bits-sos.ml/slides/linux-basics.html]]
 
 #+ATTR_HTML: :width 50% :height 50%
-[[./qr_code.png]]
-* Introduction
-[[./tux.png]]
-** What is dual booting?
-Dual booting is having two operating systems running bare metal on the same computer
-** Why should you dual boot?
-1. Compartmentalization of tasks
-2. Ability to run applications exclusive to a given OS
-** Goals of this workshop
-1. Learning how to dual boot
-2. Picking the right distro for you
-3. Supervised installation
-* Dual-booting Linux and Windows
-#+ATTR_HTML: :width 80% :height 80%
-[[./matter.png]]
-** This workshop will focus on dual-booting Linux alongside Windows
-OSX users are welcome too.
-@Pal will be helping Mac users install Asahi Linux
-** But... why?
-[[./why.jpeg]]
-*** Windows PATHs are a nightmare to set and manage
-To set up programming-related software, users often have to modify Window's PATH. This is widely agreed to be notoriously difficult, not to mention time-consuming. Package managers automatically set PATH variables when required on Linux, and it is much easier to do so manually when the need arises.
-*** Windows has no package manager
-Package managers are very useful for getting free software with one click. This includes applications such as VLC, Blender, Audacity etc. and programming software such as Python, GCC, Clang etc.
-*** Pop!_OS
-#+ATTR_HTML: :width 80% :height 80%
-[[./shop.png]]
-*** Mint
-#+ATTR_HTML: :width 70% :height 70%
-[[./manager.png]]
-*** Linux cannot run games and CAD software reliably
-If you wish to run any recent multiplayer game or AutoCAD, you will not be able to do so with Linux. Multiplayer games use kernel-level anticheat software, which just won't work on top of a translation layer like WINE. AutoCAD is too dependent on the .NET framework to work properly with WINE.
-*** However...
-Thanks to the SteamDeck, a lot of games have been ported to Linux. You /can/ game on Linux, but it just won't support 100% of games.
-#+ATTR_HTML: :width 50% :height 50%
-[[./deck.png]]
-** I do not require the latest AAA games or CAD software. Should I just use Linux?
-** Yes!
-Linux has comparable or better performance in most tasks outside of those. Gaming on Linux has been getting better thanks to the SteamDeck incentivizing developers to make their games work on Linux.
-* Distributions
-[[./distros.png]]
-** What is linux?
-Linux is a kernel, the core component of the Operating System which manages interactions between the OS and hardware. When we say "Linux", it refers to a GNU system consisting of various components, including the linux kernel.
-** What is a linux distribution?
-A distribution is an operating system made from a set of software, which includes the linux kernel alongside an init system, coreutils and often a package manager.
-** Parts of a distribution
-[[./3Dtux.png]]
-** init system
-The init is the first process started by the system, and it continues running as a daemon till shutdown. If the kernel can't start it, it will result in a kernel panic. The init system is responsible for supervising processes and starting and stopping processes critical to the system.
-*** SystemD
-SystemD is the most commonly used init system. It comes with a bunch of utilities like a journaling system, which makes it very convenient to use. This, however, has drawn some criticism as it is doing more than what an init system should be doing, which is against the UNIX philosophy. It also starts slightly slower on older machines.
-*** OpenRC (Gentoo)
-OpenRC is often used by distros that wish not to implement SystemD. It is fast, lightweight and it does its job. Unfortunately, it does not provide daemon monitoring tools which are necessary for restarting crashed programs.
-*** Runit (Void)
-Runit quite similar to OpenRC, but it also provides daemon monitoring tools. This makes it a favorite of many, as it couples the minimalism of OpenRC and the convenience of SystemD.
-** Package manager
-A package manager is an application that simplifies and automates the process of installing, upgrading and uninstalling software. Instead of downloading multiple EXEs and going through a long installation process for each and every application you want to use, you can install applications through a simple to use app store similar to Android/iOS.
-*** apt (debian-based distros)
-apt (and its derivatives) are used by debian and distros that derive from it. It is a simple package manager.
-*** pacman (arch-based distros)
-pacman is arch linux' package manager. It is much faster than apt, and provides more up-to-date packages. When coupled with an AUR manager like yay, it is the best package manager for normal use.
-*** portage
-Portage is Gentoo's package manager. It takes a source-based approach for most packages, and lets you customize every little detail of them prior to compilation.
-*** XBPS
-XBPS is Void's package manager. It's fast, lightweight and lets you switch between source-based and binary-based approaches.
-*** nix and guix
-Nix and Guix are functional package managers, that take a functional approach to package management: i.e. they treat packages as pure functions of their dependencies. This eliminates any side effects, and solves the problem of dependency hell.
-** Release style
-#+ATTR_HTML: :width 50% :height 50%
-[[./IBM_tux.jpg]]
-*** Point release
-Point-release distros release stable versions of multiple packages once in a while. This makes the system stable and less prone to failure. The disadvantages of this approach are that packages are a version or two behind the latest and that installing the latest software for development purposes can get difficult.
-*** Rolling release
-Rolling-release distros ship new packages /as soon as they are released./ This means that you will be using the latest and greatest versions of your favorite software hot off the press. The disadvantages of this approach are that you can get stability issues and experience dependency hell if you install too many packages.
-** Desktop Environments
-Desktop Environments are bundles of GUI programs that provide a full-desktop experience. These contain a Window Manager, various desktop utilities like taskbars and start menus and often come with GUI applications such as a notepad or a calendar.
-*** KDE
-KDE is a highly polished, cool-looking Desktop Environments. It comes loaded with tons of features and very slick animations. It uses qt for theming, which makes it look absolutely gorgeous. Windows 10 and 11 somewhat resemble KDE.
-#+REVEAL: split
-[[./plasma.png]]
-#+REVEAL: split
-[[./kde1.png]]
-#+REVEAL: split
-[[./kde2.png]]
-*** XFCE
-XFCE is a fast, lightweight and highly customizable Desktop Environment. All its components are swappable and modular. It uses GTK3 for theming, and with a bit of tweaking provides a very comfortable experience. It somewhat resembles Windows 7.
-#+REVEAL: split
-[[./xfce1.png]]
-#+REVEAL: split
-[[./xfce2.png]]
-#+REVEAL: split
-[[./xfce3.png]]
-*** GNOME
-GNOME is perhaps the most commonly used Desktop Environment, as it is the default DE of Ubuntu. It provides a polished user interface that is quite different from Windows' UI. It uses GTK4 for theming. 
-#+REVEAL: split
-[[./gnome1.png]]
-#+REVEAL: split
-[[./gnome2.jpeg]]
-#+REVEAL: split
-[[./gnome3.webp]]
-*** Cinnamon, MATE, LXDE, LXQT etc..
-These Desktop Environments are less commonly used, and I would not recommend using them as a beginner since any issues will be hard to debug. Cinnamon and MATE are forks of GNOME3 and GNOME2 respectively, and provide a more traditional computing experience.
-#+REVEAL: split
-[[./cinnamon.png]]
-#+REVEAL: split
-[[./mate.png]]
-#+REVEAL: split
-[[./lxde.png]]
-* Recommended Distros
-** Rolling Release
-*** Arch Linux
-Arch Linux is perhaps the most widely-used rolling release distro. It boasts a humongous software repository and a very helpful wiki that can resolve nearly all your problems. Its only demerit is that it does not provide a GUI for installation, which can be a bit daunting for beginners. 
-
-[[./arch.svg]]
-*** EndeavourOS
-EndeavourOS is Arch Linux repackaged with an excellent GUI installer. It comes with multiple themed desktop environments and WMs, and provides you with all the benefits of Arch minus the arduous installation and configuration process.
-
-[[./end_wh.png]]
-*** Void Linux
-Void Linux comes with the super fast Runit init system and the reliable XBPS package manager. It has a TUI installer that simplifies the installation and provides most of the packages you will find necessary. Void is ideal for older machines that have low specs or still use hard drives.
-
-[[./void.svg]]
-** Point Release
-*** Mint 
-Mint is a very simple to use fork of Ubuntu and it comes with Cinnamon, MATE and XFCE. This distro provides a similar experience to using Windows and is highly recommended for older PCs.
-
-#+ATTR_HTML: :width 30% :height 30%
-[[./mint.png]]
-*** Pop!_OS
-Pop!_OS is System76's linux distro, which is aimed at gamers, STEM students and creative professionals. It provides a neat and user-friendly UI.
-
-#+ATTR_HTML: :width 30% :height 30%
-[[./pop.svg]]
-*** Fedora
-Fedora is essentially a development version of Red Hat Enterprise Linux. It implements cutting-edge technology like Wayland and Pipewire while offering the same stability as Ubuntu variants.
-
-[[./fedora.png]]
-** Advanced Users
-*** Gentoo
-Gentoo is a very interesting distro which pushes the user to compile everything from scratch, /including the linux kernel/. The user is encouraged to set USE Flags to control every bit of every single package and keep bloat to a minimum. It's the perfect distro for intermediate users with powerful computers.
-
-#+ATTR_HTML: :width 20% :height 20%
-[[./gentoo.svg]]
-*** Slackware
-Slackware is one of the oldest linux distros still in use. It aims to provide a more UNIX-like experience compared to other linux distros. Installing packages on it is a bit harder than other distros, and while the defaults are user-friendly a beginner might struggle to use it.
-
-[[./slackware-silver.png]]
-*** NixOS
-NixOS is a linux distribution built atop the Nix package manager. Nix is a functional package manager, which makes it immune to problems like dependency hell. It is at the forefront of modern package management, and provides a bunch of nifty features such as being able to define your entire OS in a single file and then being able to reproduce it exactly on another PC just by copying over that file. Functional package management, however, does not obey the Linux Filesystem Hierarchy Standard, which leads to problems. It also has a complicated CLI.
-*** Guix System with nonguix
-Guix System is built on top of the GNU Guix package manager, which is a functional package manager similar to Nix with the main difference being that Guix uses Guile Scheme, GNU's official scripting language, instead of a DSL like Nix. It provides all the benefits of NixOS and has a much simpler CLI, but the disadvantages with Guix are that the official repositories package /only/ libre software and that its userbase is quite small. 
-#+REVEAL: split
-[[./guix.svg]]
-
-#+ATTR_HTML: :width 30% :height 30%
-[[./nix.svg]]
-** Consider Alternatives to These
-*** Ubuntu
-Canonical is known for creating strange in-house solutions instead of contribution to existing projects in the linux community. This has lead to Ubuntu featuring a lot of strange quirks that can sometimes interfere with normal work. For example, firefox is packaged as a Snap in the latest version of Ubuntu. _We would recommend using Pop!_OS instead_.
-*** Debian
-Debian is a more server-oriented distro, hence using something like Mint or Arch for a personal computer would be recommended instead.
-*** Kali Linux
-Kali Linux is just Ubuntu with some pentesting tools pre-installed. Unless you wish to learn pentesting, Kali Linux is not recommended.
-*** Manjaro
-Manjaro is a fork of Arch that arbitrarily holds back updates for the sake of "stability". It ends up providing neither the stability of a point-release distro, nor the latest packages of a rolling-release distro. Using vanilla Arch or EndeavourOS instead is recommended. 
-* Procedure Overview
-** Preparation
-1. Setting up a LiveCD with Balena
-2. Disabling Fast Startup
-3. Disabling BitLocker
-4. Shrinking partitions
-5. Backing up important data
-** Booting into the LiveCD
-1. Disabling SecureBoot
-2. Booting into LiveCD
-3. Installing the distro into empty space
-** Post-install
-1. Fixing the clock
-2. Checking everything works
-3. Moving programming-related files to Linux
-* Preparation
-** Setting up a LiveCD with Rufus
-We will download our selected distro's LiveCD from its website, and then use [[https://www.balena.io/etcher][Balena Etcher]] to burn it onto a USB drive of a size around 4 GB or greater.
-
-#+ATTR_HTML: :width 50% :height 50%
-[[./etcher.png]]
-** Disabling Fast Startup
-Go to Windows Settings -> Choose what the power buttons do and then scroll down to Shut down settings and uncheck the box for "Turn on fast startup".
-
-[[./fastboot.webp]]
-** Disabling BitLocker
-Control Panel -> System and Security -> Bitlocker Drive Encryption
-Click on "Turn Off Bitlocker"
-Just to be safe, make sure to note down your Bitlocker key.
-
-[[./bitlocker.png]]
-** Shrinking partitions
-Open diskmgmt.msc and shrink the C:/ or D:/ drive by around 64 GB.
-
-[[./diskmgmt.webp]]
-** Backing up important data
-Create a backup of important data on an external drive.
-*We will not be responsible for any loss of data, so please back it up!*
-* Booting into the LiveCD
-** Disabling SecureBoot
-Boot and press [F2] to enter BIOS. Go to [Security] tab > [Default Secure boot on] and set as [Disabled]. Go to [Save & Exit] tab > [Save Changes] and select [Yes].
-
-[[./secureboot.jpg]]
-** Booting into the LiveCD
-Mash the "Boot options" button (usually F10) and pick your USB device as the boot drive.
-
-#+ATTR_HTML: :width 50% :height 50%
-[[./boot_menu.webp]]
-** Installing the distro into empty space
-When the distro's installer asks you where you want to install it, select the empty space we created. The bootloader should point to the main drive.
-* Post-install
-** Checking everything works
-Boot into Windows, check that all your data is there, check that you can boot into all OSes, etc.
-** Fixing the clock
-The system clock will point to the wrong time, because of fundamental differences in how linux and windows read time from the system clock. Windows stores the time as local time, while linux stores it as UTC.
-Launch cmd as Administrator and run this command (it is a single line):
-#+BEGIN_SRC
-reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation
-/v RealTimeIsUniversal /t REG_DWORD /d 1
+[[./qr-code-linux-basics.png]]
+* Before We Start
+Get the same setup:
+#+BEGIN_SRC bash
+  wget -r https://bits-sos.ml/resources/linux-basics
+  cd linux-basics
 #+END_SRC
-** Moving programming-related files to Linux
-Mount your Windows drive in Linux using a package called ntfs-3g, and then copy or move over your programming related files to Linux. 
+OR
+#+BEGIN_SRC bash
+  git clone https://github.com/BITS-SOS/linux-basics
+  cd linux-basics
+#+END_SRC
+* Some Absolute Basics
+[[./tux.png]]
+** Files
+- In Linux, everything is a file.
+- File system hierarchy: /, /bin, /lib, /usr, etc.
+- Files have ownership and access permissions.
+- Linux supports various file types like regular files, directories, symlinks, etc.
+** Users and Groups
+- Users are accounts that access system resources with unique usernames and IDs.
+- Groups are collections of users that share permissions and access levels.
+- Users can be assigned permissions to files and directories.
+- New users and groups can be created with useradd and groupadd respectively.
+- (IMPORTANT) Only use the root user or sudo when you absolutely know what you are doing.
+** Permissions
+- There are three types of permissions: read, write, and execute, which can be assigned to three different classes of users: owner, group, and others.
+- The chmod command is used to modify permissions and the chown and chgrp commands are used to change the ownership and group of a file or directory.
+- The umask command can be used to set default permissions for newly created files and directories.
+* History of Terminals
+#+ATTR_HTML: :width 50% :height 50%
+[[./VT100.jpg]]
+** 1960s and 1970s - Mainframes
+- Mainframes were big computers a lot of people accessed at the same time
+- People used "terminals" to access these mainframes and perform tasks on them
+- Earliest form was teletype machine (tty)
+- Video terminals came around later, but were expensive
+  - They came with color output, fancy cursor movements and other features
+** Personal Computers
+- Terminal Emulators simulated video terminals on pesonal computers
+- First ever terminal emulator was on the PDP-11
+** Shells
+- User interface that lets users interact with the OS through a CLI
+- First shell was Multic's MIDAS
+- "Thompson shell" or sh came with UNIX
+- Bourne shell, C shell, Korn shell came around later
+- Linux comes with Bourne Again Shell (bash)
+- ZSH and Fish are other popular options
+* Navigation
+[[./navigation.jpg]]
+** pwd
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id pwd
+#+BEGIN_SRC bash
+  pwd
+#+END_SRC
+** pwd
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id pwd
+#+BEGIN_SRC bash
+  pwd
+  -> /home/<user>/linux-basics
+#+END_SRC
+** cd
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cd
+#+BEGIN_SRC bash
+  cd dir
+  pwd
+  cd ..
+  pwd
+#+END_SRC
+** cd
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cd
+#+BEGIN_SRC bash
+  cd dir
+  pwd
+  -> /home/<user>/linux-basics/dir
+  cd ..
+  pwd
+  -> /home/<user>/linux-basics
+#+END_SRC
+** ls
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id ls
+#+BEGIN_SRC bash
+  ls dir
+#+END_SRC
+** ls
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id ls
+#+BEGIN_SRC bash
+  ls dir
+  -> file.txt
+#+END_SRC
+** tree
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tree
+#+BEGIN_SRC bash
+  tree dir
+#+END_SRC
+** tree
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tree
+#+BEGIN_SRC bash
+  tree dir
+  dir
+  └── file.txt
+
+  1 directory, 1 file
+#+END_SRC
+** mv
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id mv
+#+BEGIN_SRC bash
+  mv hello.c hello2.c
+  ls
+#+END_SRC
+** mv
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id mv
+#+BEGIN_SRC bash
+  mv hello.c hello2.c
+  ls
+  -> dir hello2.c ...
+#+END_SRC
+** mkdir
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id mkdir
+#+BEGIN_SRC bash
+  mkdir dir/dir2
+  ls dir
+#+END_SRC
+** mkdir
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id mkdir
+#+BEGIN_SRC bash
+  mkdir dir/dir2
+  ls dir
+  -> file.txt dir2
+#+END_SRC
+** touch
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id touch
+#+BEGIN_SRC bash
+  touch dir/file2.txt
+  ls dir
+#+END_SRC
+** touch
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id touch
+#+BEGIN_SRC bash
+  touch dir/file2.txt
+  ls dir
+  -> dir2 file.txt file2.txt
+#+END_SRC
+** rm
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id rm
+#+BEGIN_SRC bash
+  rm dir/file2.txt
+  rm -r dir/dir2
+  ls dir
+#+END_SRC
+** rm
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id rm
+#+BEGIN_SRC bash
+  rm dir/file2.txt
+  rm -r dir/dir2
+  ls dir
+  -> file.txt
+#+END_SRC
+** cp
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cp
+#+BEGIN_SRC bash
+  cp dir/file.txt dir/file2.txt
+  ls dir
+#+END_SRC
+** cp
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cp
+#+BEGIN_SRC bash
+  cp dir/file.txt dir/file2.txt
+  ls dir
+  -> file.txt file2.txt
+#+END_SRC
+* Common Commands
+#+ATTR_HTML: :width 40% :height 40%
+[[./bash.svg]]
+** man
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id pwd
+#+BEGIN_SRC bash
+  man man
+#+END_SRC
+** echo
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id echo
+#+BEGIN_SRC bash
+  echo "Hello, World!"
+#+END_SRC
+** echo
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id echo
+#+BEGIN_SRC bash
+  echo "Hello, World!"
+  -> Hello, World!
+#+END_SRC
+** cat
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cat
+#+BEGIN_SRC bash
+  cat linux-basics.sh
+  #+END_SRC
+** less
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id less
+#+BEGIN_SRC bash
+  less linux-basics.sh
+  #+END_SRC
+** head
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id head
+#+BEGIN_SRC bash
+  head -n 1 linux-basics.sh
+  #+END_SRC
+** head
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id head
+#+BEGIN_SRC bash
+  head -n 1 linux-basics.sh
+  -> #!/usr/bin/bash
+#+END_SRC
+** tail
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tail
+#+BEGIN_SRC bash
+  tail -n 1 linux-basics.sh
+  #+END_SRC
+** tail
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tail
+#+BEGIN_SRC bash
+  tail -n 1 linux-basics.sh
+  -> echo $(expr $STEP + 1) > /tmp/STEP
+#+END_SRC
+** grep
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id grep
+#+BEGIN_SRC bash
+  grep "getopts" *
+  #+END_SRC
+** |
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id |
+#+BEGIN_SRC bash
+  cat linux-basics.sh | grep "bash"
+  #+END_SRC
+** >
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id >
+#+BEGIN_SRC bash
+  echo "ok" > ok.txt
+  #+END_SRC
+** >>
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id >>
+#+BEGIN_SRC bash
+  echo "still ok" >> ok.txt
+  #+END_SRC
+** cut
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id cut
+#+BEGIN_SRC bash
+  echo "h e l l o" | cut -d" " -f2
+  #+END_SRC
+** tee
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tee
+#+BEGIN_SRC bash
+  echo "hello" | tee hello.txt
+  #+END_SRC
+** chmod
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id chmod
+#+BEGIN_SRC bash
+  chmod -x linux_basics.sh
+  #+END_SRC
+** chown
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id chown
+#+BEGIN_SRC bash
+  chown -R $user file/dir
+  #+END_SRC
+** chattr
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id chattr
+#+BEGIN_SRC bash
+  sudo chattr +i hello.txt
+#+END_SRC
+** wget
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id wget
+#+BEGIN_SRC bash
+  wget https://www.bits-sos.ml/images/bits_sos.png
+  #+END_SRC
+** curl
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id curl
+#+BEGIN_SRC bash
+  curl https://wttr.in
+  #+END_SRC
+** tar
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id tar
+#+BEGIN_SRC bash
+  tar -xvf archive.tar
+  #+END_SRC
+** unzip
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id unzip
+#+BEGIN_SRC bash
+  unzip zipped.zip
+  #+END_SRC
+** find
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id find
+#+BEGIN_SRC bash
+  find . -name "*.sh"
+  #+END_SRC
+** fzf
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id fzf
+#+BEGIN_SRC bash
+  fzf
+  #+END_SRC
+** sleep
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id sleep
+#+BEGIN_SRC bash
+  sleep 3s;
+  #+END_SRC
+** pkill
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id pkill
+#+BEGIN_SRC bash
+  pkill -SIGUSR1 <process>
+  #+END_SRC
+** killall
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id killall
+#+BEGIN_SRC bash
+  killall process
+  #+END_SRC
+** alias
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id alias
+#+BEGIN_SRC bash
+  alias vi="nvim"
+  #+END_SRC
+** function
+:PROPERTIES:
+:REVEAL_EXTRA_ATTR: data-auto-animate
+:END:
+#+ATTR_REVEAL: :data_id function
+#+BEGIN_SRC bash
+  mkcd() { mkdir $1 && cd $1; }
+#+END_SRC
+* Branching and Looping
+#+ATTR_HTML: :width 40% :height 40%
+[[./looping.jpg]]
+** variables
+#+BEGIN_SRC bash
+w="world"
+echo "hello $w"
+$? -> exit status
+read var
+getopts
+#+END_SRC
+** test
+#+BEGIN_SRC bash
+test expr
+[ expr ]
+[ -f file ]
+[ -z empty_string ]
+[ "stra" != "strb" ]
+[ $x -gt 4 ]
+[[]] -> not really standard, but has neat features like regex matching
+#+END_SRC
+** exit
+#+BEGIN_SRC bash
+exit 0 -> success
+exit 1 -> failure
+#+END_SRC
+** arithmetic
+#+BEGIN_SRC bash
+let "a = 2 + 6/3"
+expr "2 + 6/3"
+$(( 2 + 6/3 ))
+${#w} -> length of str in w
+#+END_SRC
+** if
+#+BEGIN_SRC bash
+  if predicate; then
+      action
+  elif predicate2; then
+      action2
+  else
+      action3
+  fi
+#+END_SRC
+** match case
+#+BEGIN_SRC bash
+  case $i in
+      a)
+          s1
+          ;;
+      b | c)
+          s2
+          ;;
+      d)
+          s3
+          ;;
+      *)
+          s4
+          ;;
+  esac
+#+END_SRC
+** while loop
+#+BEGIN_SRC bash
+  while pred; do
+      something
+  done
+#+END_SRC
+** for loop
+#+BEGIN_SRC bash
+  for i in 1 2 3 4 5; do
+      echo "count: $i"
+  done
+#+END_SRC
+* Shell Scripting Examples
+#+ATTR_HTML: :width 50% :height 50%
+[[./shell.jpg]]
+** Remove Prefix
+#+BEGIN_SRC bash
+#!/bin/bash
+read -p "Enter the name of the directory: " dirname
+read -p "Enter the prefix to be removed: " prefix
+
+# Check if the given directory exists
+if [ -d "$dirname" ]
+then
+  # Loop through all the files in the directory
+  for file in "$dirname"/*"$prefix"*
+  do
+    # Remove prefix from filename
+    newname=$(echo $file | sed "s/$prefix//")
+    mv "$file" "$newname"
+    echo "File $file renamed to $newname"
+  done
+else
+  echo "Directory $dirname does not exist."
+fi
+#+END_SRC
+
+** Resize Images in a Directory
+#+BEGIN_SRC bash
+#!/bin/bash
+
+read -p "Enter the name of the directory: " dirname
+read -p "Enter the desired width of images: " width
+
+for file in $dirname/*.{jpg,png,jpeg}; do
+  if [ -f "$file" ]; then
+    echo "Resizing $file..."
+    convert "$file" -resize "$width" "$file"
+  fi
+done
+
+echo "All images in $dirname have been resized to $width pixels wide."
+#+END_SRC
+
+* Task
+Write a script to recursively copy all the files in the demo directory to a directory called BACKUP

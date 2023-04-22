@@ -19,11 +19,6 @@
 * Before We Start
 Get the same setup:
 #+BEGIN_SRC bash
-  wget -r https://bits-sos.ml/resources/linux-basics
-  cd linux-basics
-#+END_SRC
-OR
-#+BEGIN_SRC bash
   git clone https://github.com/BITS-SOS/linux-basics
   cd linux-basics
 #+END_SRC
