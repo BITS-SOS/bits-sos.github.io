@@ -24,14 +24,26 @@ Get the same setup:
 #+END_SRC
 OR
 #+BEGIN_SRC bash
-  git clone https://github.com/bits-sos/linux-basics
+  git clone https://github.com/BITS-SOS/linux-basics
   cd linux-basics
 #+END_SRC
 * Some Absolute Basics
 [[./tux.png]]
 ** Files
+- In Linux, everything is a file.
+- File system hierarchy: /, /bin, /lib, /usr, etc.
+- Files have ownership and access permissions.
+- Linux supports various file types like regular files, directories, symlinks, etc.
 ** Users and Groups
+- Users are accounts that access system resources with unique usernames and IDs.
+- Groups are collections of users that share permissions and access levels.
+- Users can be assigned permissions to files and directories.
+- New users and groups can be created with useradd and groupadd respectively.
+- (IMPORTANT) Only use the root user or sudo when you absolutely know what you are doing.
 ** Permissions
+- There are three types of permissions: read, write, and execute, which can be assigned to three different classes of users: owner, group, and others.
+- The chmod command is used to modify permissions and the chown and chgrp commands are used to change the ownership and group of a file or directory.
+- The umask command can be used to set default permissions for newly created files and directories.
 * History of Terminals
 #+ATTR_HTML: :width 50% :height 50%
 [[./VT100.jpg]]
@@ -52,6 +64,7 @@ OR
 - Linux comes with Bourne Again Shell (bash)
 - ZSH and Fish are other popular options
 * Navigation
+[[./navigation.jpg]]
 ** pwd
 :PROPERTIES:
 :REVEAL_EXTRA_ATTR: data-auto-animate
@@ -228,6 +241,8 @@ OR
   -> file.txt file2.txt
 #+END_SRC
 * Common Commands
+#+ATTR_HTML: :width 40% :height 40%
+[[./bash.svg]]
 ** man
 :PROPERTIES:
 :REVEAL_EXTRA_ATTR: data-auto-animate
@@ -464,6 +479,8 @@ OR
   mkcd() { mkdir $1 && cd $1; }
 #+END_SRC
 * Branching and Looping
+#+ATTR_HTML: :width 40% :height 40%
+[[./looping.jpg]]
 ** variables
 #+BEGIN_SRC bash
 w="world"
@@ -533,20 +550,19 @@ ${#w} -> length of str in w
       echo "count: $i"
   done
 #+END_SRC
-* Examples
+* Shell Scripting Examples
+#+ATTR_HTML: :width 50% :height 50%
+[[./shell.jpg]]
 ** Remove Prefix
 #+BEGIN_SRC bash
 #!/bin/bash
+read -p "Enter the name of the directory: " dirname
+read -p "Enter the prefix to be removed: " prefix
 
-# This script removes a specified prefix from all files in a directory
-
-read -p "Enter directory name: " dirname
-read -p "Enter prefix to remove: " prefix
-
-# Check if directory exists
+# Check if the given directory exists
 if [ -d "$dirname" ]
 then
-  # Loop through all files in the directory and rename files with prefix removed
+  # Loop through all the files in the directory
   for file in "$dirname"/*"$prefix"*
   do
     # Remove prefix from filename
@@ -563,21 +579,18 @@ fi
 #+BEGIN_SRC bash
 #!/bin/bash
 
-echo "Enter the directory path where the images are located: "
-read dir_path
+read -p "Enter the name of the directory: " dirname
+read -p "Enter the desired width of images: " width
 
-echo "Enter the desired width of the images: "
-read width
-
-for file in $dir_path/*.{jpg,png,jpeg}; do
+for file in $dirname/*.{jpg,png,jpeg}; do
   if [ -f "$file" ]; then
     echo "Resizing $file..."
     convert "$file" -resize "$width" "$file"
   fi
 done
 
-echo "All images have been resized to $width pixels wide."
+echo "All images in $dirname have been resized to $width pixels wide."
 #+END_SRC
 
 * Task
-Write a script to move all files with the .txt extension to the directory TXT
+Write a script to recursively copy all the files in the demo directory to a directory called BACKUP
