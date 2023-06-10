@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><title>Cepheus CTF 23 Writeup &ndash; Society for Open Software</title>
+<meta name="description" content="BPHC&#39;s Linux and Free Software Society">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="../../css/palettes/gruvbox-dark.css">
+<link rel="stylesheet" href="../../css/risotto.css">
+<link rel="stylesheet" href="../../css/custom.css">
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><h1 class="page__logo"><a href="../../" class="page__logo-inner">Society for Open Software</a></h1>
+<nav class="page__nav main-nav">
+    <ul>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="../../about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="../../apply/" title="">Apply</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="../../members/" title="">Members</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item active" href="../../posts/" title="Posts">Posts</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Cepheus CTF 23 Writeup</h1>
+    </header>
+    <div class="content__body">
+        <h1 id="cepheus-ctf-23-writeup">Cepheus CTF 23 Writeup</h1>
+<p>Cepheus CTF was one of the first Capture the Flag (CTF) tournaments we took part in. This competition was hosted by IIT Goa and saw more than 20 teams compete to score the most points before the timer ran out. Despite the fierce competition, we managed to bag <strong>first place</strong>. This post contains some of the more interesting questions we solved for this CTF.</p>
+<h2 id="these-were-some-of-the-interesting-questions-">These were some of the interesting questions :</h2>
+<ul>
+<li>Phonic anomaly: (50)</li>
+</ul>
+<p>Your team has received an email containing an audio file. They were not able to understand what it was so they sent the file to you as you have a thorough understanding of audio files. You need to find the message that is hidden in this file and help your team.</p>
+<p>Flag: <strong>CTF{Ph3i_f4mily_is_in_d4ng3r}</strong></p>
+<p>Files: ph31ns.wav</p>
+<p><em>Solution:</em></p>
+<p><em>Tool used : audacity and coagula</em></p>
+<p><em>This is a basic question related to audio forensics. Open the wav in audacity and check the spectrogram. You will find the flag but a bit jumbled, Clearly analyze it to get the flag.</em></p>
+<ul>
+<li>Hide and seek (50)</li>
+</ul>
+<p>You have recently captured an enemy base. While searching for data on the servers present there, UAVIS senses your presence there, so it hides the information present on that server in the form of QR&rsquo;s and scatters them.</p>
+<p>Find the correct QR codes and get the flag.</p>
+<p>File used : f1nd_m3.zip</p>
+<p>Flag: <strong>CTF{U4V1S_h4s_v3ry_f3w_5uppl13s_l3f7}</strong></p>
+<p>*Solution: Here, in this question you have a zip file which contains many folders and each folder contains scattered images of a single qr code. To find the flag you can use the help of any editor or it can also be done in linux by using this command: $command -append <em>.png output.png Where output.png is the new image formed by combining all the images in that folder. Doing this for every file in the zip folder we will find two qr’s which leads to the correct formation of the flag.</em></p>
+<ul>
+<li>Identity crisis (100)</li>
+</ul>
+<p>Your secret agent in the enemy base, robot16, has salient information which can turn the tide of the war in your favour, but robot16 is unable to translate it due to some internal issues. However, it also brought a file with it. Find out what information it brought before it is too late. File name : robot.zip</p>
+<p>Flag:<strong>CTF{r0b0t16_1d3nti7y_r3v3al3d}</strong></p>
+<p><em>Solution: A file named “op3nm3_f1r5t.pdf” is given, so let&rsquo;s open it. Here it is says to rotate the given words with the help of robot, as our robot is named as robot16, so let us rotate the given words using rot16 decrypter, then we get the word “c4rful” Using this word if you open the next pdf you will find nothing, but if you search the same word in robot_16.zip file, you will find a text file, if you clearly observe the text file you will find a website link and a password. Using this both along with the given image, you will get a decrypted text which is of hexadecimal form, if you convert this into normal text you will get the flag.</em></p>
+<ul>
+<li>The rebel alliance (150)</li>
+</ul>
+<p>Your team has planned to attack the Pinnacle Tower. But there is one problem, as it is a tower the security there is very high.So, your team has planned to create a diversion by shutting off the main server of the base, which can be done by entering the correct passcode in the server. Now, the spies have sent you a file, “PINNACLE” which contains a code. Examine and run the code properly and get the password. It seems more like a movie plot “ THE STAR WARS”</p>
+<p>Flag: <strong>CTF{HAVEANICERIDE}</strong></p>
+<p>Files: THESTARWARS.py</p>
+<p><em>Solution: The function is a modified version of Caesar Cipher. You’ve to create a decryption function The hint for key is the number of days Cepheus will last = 5</em></p>
+<ul>
+<li>The imitation game (50)</li>
+</ul>
+<p>Attention! You receive information from your allies that there is a code which if decrypted will be helpful in winning the war. You also get to know that these types of code were famously used in ancient human world wars that occurred much decades before. If you have it in you that it takes to be an Alan Turning of this war, then break the code :</p>
+<p>CVKLGNCBORXSUOOVIQYCHIEBZHYBXWTYZPGVERHWIMWWCRNPTMUZ</p>
+<p>Ans- The fruits of victory are tumbling into your mouth too quickly</p>
+<p>Flag - <strong>CTF{The_fruits_of_victory_are_tumbling_into_your_mouth_too_quickly}</strong></p>
+<p><em>Solution: Cipher==Enigma machine</em></p>
+<ul>
+<li>Analysis (50)</li>
+</ul>
+<p>Go to the website given below. There is some clue regarding the enemies’ weaknesses, which is scattered and hidden in different locations. Find this clue and help your team gain leverage.</p>
+<p><a href="https://analysis-three.vercel.app/">link</a></p>
+<p>FLAG: <strong>CTF{1_4m_3v3rywh3r3_bu7_1n_p13c3s}</strong></p>
+<p><em>Solution: Three parts of the flag are hidden in three files of the webpage: the html, style.css, and custom.js. Since they are numbered (1/3), (2/3), and (3/3), they can be found using ctrl + f to search for the number instead of searching through all the files (alternate method) wget the entire page and grep “CTF” through all files</em></p>
+<ul>
+<li>Tough as vibranium (50)</li>
+</ul>
+<p>You are preparing to launch an attack on an enemy base. Meanwhile, your commander has sent you some instructions as a secret message with “from the lands of vibranium” written.
+Decrypt the code and move forward.</p>
+<image2>
+<p>Ans-Show them who we are Flag:</p>
+<p><strong>CTF{Show_them_who_we_are}</strong></p>
+<p><em>Solution: Cipher==Wakanda alphabet</em></p>
+<ul>
+<li>Pinpoint (50)</li>
+</ul>
+<p>While monitoring Phein’s networks, our reconnaissance team was able to retrieve information that the enemies’ strength is low, so they had requested assistance from UAVIS and sent the location of their secret hideout. They sent their location in the form of an image, which only UAVIS could figure out. The reconnaissance team reported the information to us. With their help, your team was able to recover the image but could not pinpoint the location. Now, you have been asked to trace the location so our team can get there and wipe out the rest of the enemies.</p>
+<image1>
+<p>Flag: <strong>CTF{NW10_3NR}</strong></p>
+<p><em>Solution: Get the number from the image, search it on the internet. You will get an address - Winkworth kensal and Queens park. The flag is the address’s pin code as hinted in the question’s title.</em></p>
+
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+<div class="aside__about">
+    <img class="about__logo" src="../../images/bits_sos.png" alt="Logo">
+<h1 class="about__title">Society for Open Software</h1>
+<p class="about__description">BPHC&rsquo;s Linux and Free Software Society</p>
+</div>
+
+
+<ul class="aside__social-links">
+    
+    <li>
+        <a href="https://github.com/BITS-SOS/" rel="me" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="mailto:f20212793@hyderabad.bits-pilani.ac.in" rel="me" aria-label="Email" title="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://www.facebook.com/groups/425545595875621" rel="me" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>Write-up on IIT Goa&#39;s Cepheus CTF</p>
+    
+        <p>
+            By N Pranav Krishna, 
+            2022-11-29
+        </p>
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright">© 2022 <a href="https://untyped.ml">Sarthak Shah</a> &amp; <a href="https://github.com/orgs/BITS-SOS/people">SOS Members</a>. <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>
