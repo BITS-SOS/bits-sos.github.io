@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/resources/</loc>
+    <lastmod>2023-07-26T20:49:22+05:30</lastmod>
+  </url><url>
     <loc>/</loc>
     <lastmod>2022-11-29T23:45:32+05:30</lastmod>
   </url><url>
@@ -14,7 +17,13 @@
     <loc>/posts/shell/</loc>
     <lastmod>2022-11-29T22:47:59+05:30</lastmod>
   </url><url>
+    <loc>/posts/cepheus_ctf_23_writeup/</loc>
+    <lastmod>2022-11-29T21:27:14+05:30</lastmod>
+  </url><url>
     <loc>/posts/dualboot/</loc>
+    <lastmod>2022-11-29T21:27:14+05:30</lastmod>
+  </url><url>
+    <loc>/posts/vu_ctf_writeup/</loc>
     <lastmod>2022-11-29T21:27:14+05:30</lastmod>
   </url><url>
     <loc>/members/</loc>
@@ -25,6 +34,10 @@
   </url><url>
     <loc>/about/</loc>
     <lastmod>2022-11-29T20:36:48+05:30</lastmod>
+  </url><url>
+    <loc>/cepharus_ctf_23_writeup/</loc>
+  </url><url>
+    <loc>/vu_ctf_writeup/</loc>
   </url><url>
     <loc>/categories/</loc>
   </url><url>

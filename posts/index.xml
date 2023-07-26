@@ -6,7 +6,7 @@
     <description>Recent content in Posts on Society for Open Software</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2022 [Sarthak Shah](https://untyped.ml) &amp; [SOS Members](https://github.com/orgs/BITS-SOS/people). [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
+    <copyright>© 2022-23 [Sarthak Shah](https://lispy.tech) &amp; [SOS Members](https://github.com/orgs/BITS-SOS/people). [CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)</copyright>
     <lastBuildDate>Tue, 29 Nov 2022 22:48:10 +0530</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cruxipher</title>
@@ -29,6 +29,16 @@ Poster for the workshop:
     </item>
     
     <item>
+      <title>Cepheus CTF 23 Writeup</title>
+      <link>/posts/cepheus_ctf_23_writeup/</link>
+      <pubDate>Tue, 29 Nov 2022 21:27:14 +0530</pubDate>
+      
+      <guid>/posts/cepheus_ctf_23_writeup/</guid>
+      <description>Cepheus CTF 23 Writeup Cepheus CTF was one of the first Capture the Flag (CTF) tournaments we took part in. This competition was hosted by IIT Goa and saw more than 20 teams compete to score the most points before the timer ran out. Despite the fierce competition, we managed to bag first place. This post contains some of the more interesting questions we solved for this CTF.
+These were some of the interesting questions : Phonic anomaly: (50) Your team has received an email containing an audio file.</description>
+    </item>
+    
+    <item>
       <title>Dualbooting Workshop</title>
       <link>/posts/dualboot/</link>
       <pubDate>Tue, 29 Nov 2022 21:27:14 +0530</pubDate>
@@ -37,6 +47,16 @@ Poster for the workshop:
       <description>Our very first event as a society was a workshop on dualbooting Linux with Windows.
 It took place on 19th June, 2022 at F204 in the OAB.
 Here is a clip from the event: This was the poster for the event: (Made in GIMP, of course) </description>
+    </item>
+    
+    <item>
+      <title>VU CTF 23 Writeup</title>
+      <link>/posts/vu_ctf_writeup/</link>
+      <pubDate>Tue, 29 Nov 2022 21:27:14 +0530</pubDate>
+      
+      <guid>/posts/vu_ctf_writeup/</guid>
+      <description>VU CTF This was one of the most peculiar CTF we participated in , because unlike other ctfs which had challenges . The tasks we had to do in this CTF was more practical because , We were handed a .bin file on which most of the forensics questions were based. It had more real-world application to it.
+Solution I used the AccessData FTK Imager software to tackle these questions as recommended by the organizers.</description>
     </item>
     
   </channel>
