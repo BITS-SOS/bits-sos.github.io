@@ -12,7 +12,7 @@
 #+reveal_default_slide_background_opacity: 0.4
 
 * Link to Slides
-[[https://bits-sos.ml/slides/linux-basics.html]]
+[[https://bits-sos.github.io/slides/linux-basics.html]]
 
 #+ATTR_HTML: :width 50% :height 50%
 [[./qr-code-linux-basics.png]]
@@ -391,7 +391,7 @@ Get the same setup:
 :END:
 #+ATTR_REVEAL: :data_id wget
 #+BEGIN_SRC bash
-  wget https://www.bits-sos.ml/images/bits_sos.png
+  wget https://bits-sos.github.io/images/bits_sos.png
   #+END_SRC
 ** curl
 :PROPERTIES:

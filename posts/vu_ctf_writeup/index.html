@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><title>VU CTF 23 Writeup &ndash; Society for Open Software</title>
+<meta name="description" content="BPHC&#39;s Linux and Free Software Society">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="../../css/palettes/gruvbox-dark.css">
+<link rel="stylesheet" href="../../css/risotto.css">
+<link rel="stylesheet" href="../../css/custom.css">
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><h1 class="page__logo"><a href="../../" class="page__logo-inner">Society for Open Software</a></h1>
+<nav class="page__nav main-nav">
+    <ul>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="../../about/" title="">About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="../../apply/" title="">Apply</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="../../members/" title="">Members</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item active" href="../../posts/" title="Posts">Posts</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>VU CTF 23 Writeup</h1>
+    </header>
+    <div class="content__body">
+        <h1 id="vu-ctf">VU CTF</h1>
+<p>This was one of the most peculiar CTF we participated in , because unlike other ctfs which had challenges . The tasks we had to do in this CTF was more practical because ,
+We were handed a <code>.bin</code> file on which most of the forensics questions were based. It had more real-world application to it.</p>
+<h2 id="solution">Solution</h2>
+<p>I used the AccessData FTK Imager software to tackle these questions as recommended by the organizers.
+The <code>.bin</code> file as well as FTK Imager were provided [here]
+(<a href="https://www.cyberthon.lt/large-files.html)">https://www.cyberthon.lt/large-files.html)</a>.</p>
+<h3 id="what-is-the-sha1-checksum--of-image-file-blk0_mmcblk0bin">What is the SHA1 checksum # of image file blk0_mmcblk0.bin?</h3>
+<p><img src="https://github.com/BITS-SOS/site-source/assets/52345192/c0a68262-327e-41ad-9b48-9f39a9fddf4e" alt="image"></p>
+<p>By using the &ldquo;Verify Image&rdquo; option, we can find the SHA1 checksum.</p>
+<p><img src="https://github.com/BITS-SOS/site-source/assets/52345192/08cf9c50-773d-4f92-baf9-1ef4e1dcf659" alt="image"></p>
+<h3 id="what-is-the-name-of-the-largest-partition">What is the name of the largest partition?</h3>
+<p><img src="https://github.com/BITS-SOS/site-source/assets/52345192/0162bbff-99c2-467b-8ae6-c22bf9059b27" alt="image"></p>
+<p>We can see that the largest partition is the <code>userdata</code> partition, with a size of 5465MB.</p>
+<h3 id="what-is-the-brand-vendor-of-phone">What is the brand (vendor) of phone?</h3>
+<p>There are several directories in <code>userdata/data</code> containing &lsquo;Samsung&rsquo; in their name.</p>
+<h3 id="what-is-the-model-of-the-phone">What is the model of the phone?</h3>
+<p>I found this in <code>system/SW_Configuration.xml</code></p>
+<p><img src="https://github.com/BITS-SOS/site-source/assets/52345192/3c8549b1-977a-44f3-bbdf-49a2060aa715" alt="image"></p>
+<h3 id="what-is-the-bluetooth-mac-address-of-the-device">What is the Bluetooth MAC Address of the device?</h3>
+<p>I found it in the file <code>efs/bluetooth/bt_addr</code></p>
+<h3 id="what-is-the-username-id-of-the-telegram-account">What is the username ID of the Telegram account?</h3>
+<p>I opened the file <code>userdata/data/org.telegram.messenger.web/cache4.db</code> in DB Browser and opened the <code>users</code> table.</p>
+<p><img src="https://github.com/BITS-SOS/site-source/assets/52345192/9aaba963-f79c-4946-b04e-b1512139332d" alt="image"></p>
+<h3 id="what-email-address-is-setup-on-comandroidemail-service">What email address is setup on com.android.email service?</h3>
+<p>I browsed through the <code>userdata</code> partition and found a directory titled <code>com.android.email</code> inside the <code>data</code> directory. This had a file titled <code>EmailProvider.db</code> inside its <code>databases</code> folder. I opened the file using DB Browser for SQLite (also recommended by the organisers).</p>
+<p><img src="https://github.com/BITS-SOS/site-source/assets/52345192/a4a0c0c4-6e36-470f-9bdf-2c16aa651be1" alt="image"></p>
+<h3 id="what-is-a-name-of-video-file-which-is-related-to-tanks">What is a name of video file which is related to tanks?</h3>
+<p>I browsed through the files in <code>userdata/media/0/Download</code> and found <code>tanks.mp4</code></p>
+<h3 id="what-is-a-name-of-audio-file-which-is-related-with-rifles-and-their-price">What is a name of audio file which is related with rifles and their price?</h3>
+<p>I found a file called <code>userdata/media/0/Telegram/Telegram Audio/4_5956573053423979339.ogg</code></p>
+<h3 id="based-on-the-review-of-the-media-files-please-provide-the-gps-coordinates-of-the-possible-meeting-point">Based on the review of the media files, please provide the GPS coordinates of the possible meeting point</h3>
+<p>The coordinates are visible in the image <code>userdata/media/Telegram/Telegram Images/-5956573053880219321_121.jpg</code></p>
+<h3 id="what-is-the-name-of-whatsapp-user-which-has-phone-number-37062166565">What is the name of WhatsApp user which has phone number +37062166565?</h3>
+<p>I opened the file <code>userdata/data/com.whatsapp/databases/wa.db</code> and went to the <code>wa_contacts</code> table.</p>
+<p><img src="https://github.com/BITS-SOS/site-source/assets/52345192/5082e7b8-195c-4a47-8ce3-ce13d6480798" alt="image"></p>
+<h3 id="how-much-dollars-the-seized-weapons-stuff-may-have-cost">How much dollars the seized weapons (stuff) may have cost?</h3>
+<p>I found a screenshot (<code>userdata/data/media/0/Pictures/Screenshots/Screenshot_2022-10-23-10-42-01.png</code>) of a Telegram chat.</p>
+<p><img src="https://github.com/BITS-SOS/site-source/assets/52345192/6f021a68-ceec-4e3b-a637-e10be276b39b" alt="image"></p>
+<h3 id="based-on-the-analysis-of-the-video-file-20221015_173902mp4-please-provide-the-gps-coordinates-of-the-possible-place-where-video-was-recorded">Based on the analysis of the video file 20221015_173902.mp4, please provide the GPS coordinates of the possible place, where video was recorded</h3>
+<p>This file can be found in <code>userdata/data/media/0/Download</code>.
+On using <code>exiftool 20221015_173902.mp4</code>, we find the GPS coordinates that we need.</p>
+<p><img src="https://github.com/BITS-SOS/site-source/assets/52345192/214f8e40-6d8f-4357-8995-737da3080c24" alt="image"></p>
+<h3 id="additional-resource">Additional Resource</h3>
+<p>I found <a href="https://cts-forensics.com/reports/20-5550_Web.pdf">this</a> after the event ended. It seems pretty useful and has many similar questions</p>
+
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+<div class="aside__about">
+    <img class="about__logo" src="../../images/bits_sos.png" alt="Logo">
+<h1 class="about__title">Society for Open Software</h1>
+<p class="about__description">BPHC&rsquo;s Linux and Free Software Society</p>
+</div>
+
+
+<ul class="aside__social-links">
+    
+    <li>
+        <a href="https://github.com/BITS-SOS/" rel="me" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="mailto:f20212793@hyderabad.bits-pilani.ac.in" rel="me" aria-label="Email" title="Email"><i class="fa-solid fa-envelope" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://www.facebook.com/groups/425545595875621" rel="me" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>Write-up on VU CTF</p>
+    
+        <p>
+            By Pranav Sharma, 
+            2022-11-29
+        </p>
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright">© 2022 <a href="https://untyped.ml">Sarthak Shah</a> &amp; <a href="https://github.com/orgs/BITS-SOS/people">SOS Members</a>. <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC-BY-SA</a></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

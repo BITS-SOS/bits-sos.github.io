@@ -17,7 +17,7 @@ Society for Open Software (SOS) is a newly formed society with the purpose of in
 [[./sos.png]]
 
 * Link to Slides
-[[https://bits-sos.ml/slides/dualboot.html]]
+[[https://bits-sos.github.io/slides/dualboot.html]]
 
 #+ATTR_HTML: :width 50% :height 50%
 [[./qr_code.png]]
