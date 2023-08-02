@@ -1,0 +1,40 @@
+                     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+                      SOS INDUCTION ROUND II RULES
+                     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+1. The candidate agrees to not to share the questions asked in this
+   interview, written or oral and understands that if they share these
+   questions they will be immediately disqualified and also barred from
+   all future inductions
+2. Once the candidate decrypts `questions.txt', they have *strictly* 30
+   minutes to answer the questions
+3. The candidate may freely search the web for answers during this time
+4. The candidate is however not allowed to consult or contact any
+   external parties during the interview, and doing so will warrant
+   disqualification
+5. Interviewers may ask the candidate questions about their answers
+   during and after this period, and the candidate may request the
+   interviewer for 5 extra minutes in the event that a lot of time is
+   spent answering these questions. It is up to the interviewer to
+   accept or reject this request
+6. Each question is worth *10 points*
+7. There is partial marking for questions, however it nets significantly
+   fewer points than fully solving a question
+8. The candidate may freely pick questions and switch between them,
+   however they must announce the question they are solving to the
+   interviewer and explain their process for solving it
+9. In case of poor internet connectivity or other emergencies, a
+   candidate may apply for a make-up interview. This interview will be
+   significantly harder, and will be allotted on a case-by-case basis
+   after heavy deliberation
+10. Have fun :)
+
+
+*After reading and agreeing to these rules, run the following commands
+ to get the question paper*
+┌────
+│ wget https://bits-sos.github.io/resources/questions.txt.gpg
+│ gpg -o questions.txt -d questions.txt.gpg
+└────
+The password for the file will be shared by the interviewer.
