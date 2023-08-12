@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2023-08-12 Sat 21:10 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>BITS-SOS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300&display=swap" rel="stylesheet">
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+<!--/*--><![CDATA[/*><!--*/
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+html {
+	line-height: 1.35;
+	-webkit-text-size-adjust: 100%;
+}
+
+body {
+	margin: 0;
+	font-family:
+      'Overpass',
+      system-ui,
+		-apple-system,
+		'Segoe UI',
+		Roboto,
+		Helvetica,
+		Arial,
+		sans-serif,
+		'Apple Color Emoji',
+		'Segoe UI Emoji';
+}
+
+hr {
+	height: 0;
+	color: inherit;
+}
+
+b,
+strong {
+	font-weight: bolder;
+}
+
+code,
+kbd,
+samp,
+pre {
+	  font-family:
+        ui-monospace,
+		SFMono-Regular,
+		Consolas,
+		'Liberation Mono',
+		Menlo,
+		monospace;
+	font-size: 1em;
+}
+
+small {
+	font-size: 80%;
+}
+
+sub,
+sup {
+	font-size: 75%;
+	line-height: 0;
+	position: relative;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -0.25em;
+}
+
+sup {
+	top: -0.5em;
+}
+
+table {
+	text-indent: 0;
+	border-color: inherit;
+}
+
+summary {
+	display: list-item;
+}
+
+:root {
+  --bc-tb: #dae5ec;
+  --bc-block: #595959;
+  --clr: #000000;
+  --clr-tb-hd: #000000;
+  --clr-code: #000000;
+  --bg: #ffffff;
+  --bg-code: #c8c8c8;
+  --bg-tb-hd: #c8c8c8;
+  --bg-block: initial;
+  --clr-link: #0000b0;
+  --clr-title: #000000;
+  --clr-todo: #3548cf;
+  --bg-todo: initial;
+  --clr-done: #595959;
+  --bg-done: initial;
+  --ts-clr: #531ab6;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #531ab6;
+  --bg-constant: initial;
+  --clr-constant: #0000b0;
+  --bg-comment: initial;
+  --clr-comment: #595959;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: initial;
+  --bg-function: initial;
+  --clr-function: #721045;
+  --bg-variable: initial;
+  --clr-variable: #005e8b;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #a0132f;
+  --bg-doc: initial;
+  --clr-doc: #2a5045;
+  --bg-builtin: initial;
+  --clr-builtin: #8f0075;
+  --bg-string: initial;
+  --clr-string: #3548cf;
+}
+
+html {
+    font-family: 'Overpass', sans-serif;
+}
+
+body {
+  background: #999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body[data-theme='light'] {
+  background: var(--bg);
+  color: var(--clr);
+}
+
+body[data-theme='dark'] {
+  background: var(--bg);
+  color: var(--clr);
+  --bc-tb: #002435;
+  --bc-block: #857f8f;
+  --clr: #d0d0d0;
+  --clr-code: #e0e0ff;
+  --clr-tb-hd: #e0e0ff;
+  --bg: #000000;
+  --bg-tb-hd: #2a2a75;
+  --bg-code: #2a2a75;
+  --bg-block: #121212;
+  --clr-link: #029fff;
+  --clr-title: #d0d0d0;
+  --clr-todo: #6a9fff;
+  --bg-todo: initial;
+  --clr-done: #cf9f8f;
+  --bg-done: initial;
+  --ts-clr: #af85ff;
+  --mg: 20px;
+  --w-toc: 300px;
+  --bg-keyword: initial;
+  --clr-keyword: #af85ff;
+  --bg-constant: initial;
+  --clr-constant: #029fff;
+  --bg-comment: initial;
+  --clr-comment: #cf9f8f;
+  --bg-comment-delimiter: initial;
+  --clr-comment-delimiter: initial;
+  --bg-function: initial;
+  --clr-function: #e580ea;
+  --bg-variable: initial;
+  --clr-variable: #1dbfcf;
+  --bg-preprocessor: initial;
+  --clr-preprocessor: #f47360;
+  --bg-doc: initial;
+  --clr-doc: #8aa0df;
+  --bg-builtin: initial;
+  --clr-builtin: #d369af;
+  --bg-string: initial;
+  --clr-string: #6a9fff;
+}
+
+
+@media only screen and (max-width: 768px) {
+  #content {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #content {
+    width: 768px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  body {
+    align-items: flex-center;
+  }
+  #content {
+    width: calc(100vw - var(--w-toc) - var(--mg) * 4);
+    margin-right: var(--mg);
+  }
+}
+
+h1 {
+  color: var(--clr-title);
+  text-align: center;
+}
+h2, h3, h4, h5, h6, h7 {
+    font-family: 'Overpass', sans-serif;
+}
+h2 {
+  line-height: 2.5em;
+}
+h2::before {
+  content: "◉ ";
+}
+h3::before {
+  content: "✸ ";
+}
+h4::before {
+  content: "▷ ";
+}
+
+code {
+  color: var(--clr-code);
+  background: var(--bg-code);
+  border-radius: 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+pre {
+  padding: 20px;
+  border: 1px solid var(--bc-block);
+  background: var(--bg-block);
+  font-size: 0.9rem;
+  overflow-x: scroll;
+}
+
+pre::-webkit-scrollbar {
+  display: none;
+}
+
+pre {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+
+.todo {
+  color: var(--clr-todo);
+  background: var(--bg-todo);
+}
+
+.done {
+  color: var(--clr-done);
+  background: var(--bg-done);
+}
+
+.timestamp-wrapper {
+  font-size: 0.8rem;
+  color: var(--clr-ts);
+}
+
+table {
+  width: 100%;
+  border: 2px solid var(--bc-tb);
+}
+
+thead {
+  color: var(--clr-tb-hd);
+  background: var(--bg-tb-hd);
+}
+
+td, th {
+  border: thin solid var(--bc-tb);
+}
+
+li {
+  line-height: 2rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--clr-link);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#table-of-contents > h2 {
+  display: none;
+}
+
+#table-of-contents {
+  border: thin solid var(--bc-block);
+  background: var(--bg-block);
+}
+
+#toggle-toc {
+  display: none;
+}
+
+.toc-show {
+  display: block!important;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 2em;
+    line-height: 2em;
+    display: block;
+  }
+  #table-of-contents {
+    background: var(--bg);
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+  }
+  #table-of-contents a {
+    color: var(--clr);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #table-of-contents {
+    font-size: 0.8rem;
+    position: fixed;
+    left: var(--mg);
+    top: var(--mg);
+    bottom: var(--mg);
+    width: var(--w-toc);
+    overflow-y: scroll;
+  }
+}
+
+#table-of-contents::-webkit-scrollbar {
+  display: none;
+}
+
+#table-of-contents {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.MathJax_Display {
+  font-size: 1.25em;
+}
+
+#toggle-theme {
+  border-width: 0;
+  line-height: 4em;
+  padding-left: 1em;
+  padding-right: 1em;
+  background: var(--bg-block);
+  color: var(--clr-code);
+}
+
+#toggle-theme:hover {
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  #toggle-theme {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #toggle-theme {
+    position: absolute;
+    top: var(--mg);
+    right: var(--mg);
+    border-radius: 5px;
+  }
+}
+
+.theme-transition {
+  transition: all 0.5s;
+}
+
+.status {
+  width: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+  ul {
+    padding-left: .5em;
+    margin-left: 0;
+  }
+  li {
+    padding-left: 0;
+    margin-left: 0;
+  }
+}
+/*]]>*/-->
+</style>
+</head>
+<body>
+<div id="preamble" class="status">
+<div id="toggle-theme">dark theme</div><div id="toggle-toc">&#9776;</div>
+</div>
+<div id="content" class="content">
+<h1 class="title">BITS-SOS</h1>
+<div id="outline-container-org6757f5e" class="outline-2">
+<h2 id="org6757f5e"><span class="section-number-2">1.</span> What is SOS?</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+We are a community of people that love Open Source software
+</p>
+</div>
+</div>
+<div id="outline-container-orge0f4775" class="outline-2">
+<h2 id="orge0f4775"><span class="section-number-2">2.</span> What do we do?</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+At SOS, we're primarily dedicated to improving the GNU/Linux adoption on campus.
+We also dabble in various InfoSec-related events to demonstrate the practical application of open source technologies.
+</p>
+</div>
+</div>
+<div id="outline-container-orga5c05b4" class="outline-2">
+<h2 id="orga5c05b4"><span class="section-number-2">3.</span> Workshops</h2>
+<div class="outline-text-2" id="text-3">
+
+<div id="org138886a" class="figure">
+<p><img src="./workshops.png" alt="workshops.png" width="75%" height="75%" />
+</p>
+</div>
+</div>
+<div id="outline-container-org8c079d2" class="outline-3">
+<h3 id="org8c079d2"><span class="section-number-3"></span> Details</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Every year, we hold a Dualbooting and a Linux Basics workshop.
+We will also hold workshops on Networking and Cybersecurity, so keep an eye out for announcements!
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org03de23b" class="outline-2">
+<h2 id="org03de23b"><span class="section-number-2">4.</span> CTFs</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+A <i>Capture the Flag</i> tournament involves solving various tasks in the domains of Reverse Engineering, Web Exploitation, Open Source Intelligence, Cryptography and many others.
+</p>
+</div>
+<div id="outline-container-org8df8a3f" class="outline-3">
+<h3 id="org8df8a3f"><span class="section-number-3"></span> Ranking</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li><b>1st</b> place in IIT Goa's CTF</li>
+<li><b>2nd</b> place in BITS Goa's CTF and IIT Hyderabad's <i>Enigma</i> event</li>
+<li>Top 5 in a number of other CTFs</li>
+<li>Ranked <a href="https://ctftime.org/team/214250">25th</a> <b>all over India</b></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgc8e355f" class="outline-2">
+<h2 id="orgc8e355f"><span class="section-number-2">5.</span> If you want to join us&#x2026;</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+We're looking for people that use GNU/Linux and feel at home inside a terminal.
+If you feel like you fit the bill, please reach out to us <a href="https://bits-sos.github.io/apply">here</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-org749970f" class="outline-2">
+<h2 id="org749970f"><span class="section-number-2">6.</span> Link to these slides</h2>
+<div class="outline-text-2" id="text-6">
+
+<div id="orgff5e8b0" class="figure">
+<p style="width: 40%;"><img src="./qr-raf.png" alt="qr-raf.png" width="10%" height="10%" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgfc5f89c" class="outline-2">
+<h2 id="orgfc5f89c"><span class="section-number-2">7.</span> Contacts</h2>
+<div class="outline-text-2" id="text-7">
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">President</th>
+<th scope="col" class="org-left">Secretary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">Sarthak Shah</td>
+<td class="org-left">N Pranav Krishna</td>
+</tr>
+
+<tr>
+<td class="org-left">8767059061</td>
+<td class="org-left">6309481575</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+let cookie = document.cookie.split('; ').find(r => r.startsWith('org_html_themify_theme'))
+let theme = 'light'
+
+if (cookie) {
+  theme = cookie.split('=')[1]
+}
+
+let toggleThemeBtn = document.getElementById('toggle-theme')
+let toggleTocBtn = document.getElementById('toggle-toc')
+
+if (theme == 'light') {
+  useLightTheme();
+} else {
+  useDarkTheme();
+}
+
+function transition() {
+  document.body.classList.add('theme-transition')
+  setTimeout(() => document.body.classList.remove('theme-transition'), 500)
+}
+
+function useLightTheme(theme) {
+  document.body.dataset.theme = 'light'
+  toggleThemeBtn.innerHTML = 'dark theme'
+  document.cookie = 'org_html_themify_theme=light'
+}
+
+function useDarkTheme(theme) {
+  document.body.dataset.theme = 'dark'
+  toggleThemeBtn.innerHTML = 'light theme'
+  document.cookie = 'org_html_themify_theme=dark'
+}
+
+toggleThemeBtn.addEventListener('click', function() {
+  transition()
+  if (document.body.dataset.theme == 'light') {
+    useDarkTheme();
+  } else {
+    useLightTheme();
+  }
+})
+
+
+let toc = document.getElementById('table-of-contents')
+
+toggleTocBtn.addEventListener('click', function() {
+  toc.classList.add('toc-show')
+  toc.addEventListener('click', function() {
+    toc.classList.remove('toc-show')
+  })
+})
+/*]]>*/-->
+</script>
+</div>
+<p></p>
+</body>
+</html>
