@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Browsers and Privacy</title>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css"/>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/blood.css" id="theme"/>
+
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://cdn.jsdelivr.net/npm/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide" data-background="./tux.png" data-background-size="200px" data-background-repeat="repeat" data-background-opacity="0.2"><h1>Browsers and Privacy</h1><h1></h1>
+</section>
+<section>
+<section id="slide-orgaa2c410" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgaa2c410">Browsers and Privacy</h2>
+
+<div id="orgdfb1e81" class="figure">
+<p><img src="./Internet-web-browser.svg" alt="Internet-web-browser.svg" class="org-svg" width="45%" height="45%" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org937b6a7" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org937b6a7">What is a Browser?</h2>
+<p>
+A browser is an application that accesses websites.
+It retrieves files from web servers and display them.
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org3ee2f86" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org3ee2f86">A Brief History of Browsers</h2>
+<div class="outline-text-2" id="text-org3ee2f86">
+</div>
+</section>
+<section id="slide-org4db7766" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org4db7766">WorldWideWeb (1990)</h3>
+<p>
+Created by Tim Berners-Lee at CERN for the NeXT computer
+</p>
+
+<div id="org5c6d380" class="figure">
+<p><img src="./www.gif" alt="www.gif" width="65%" height="65%" />
+</p>
+</div>
+</section>
+<section id="slide-org87d55ff" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org87d55ff">Mosaic (1993)</h3>
+<p>
+Ancestor of Firefox, created at UIUC by Marc Andreessen
+</p>
+
+
+<div id="org2b5dac0" class="figure">
+<p><img src="./mos-10.webp" alt="mos-10.webp" />
+</p>
+</div>
+</section>
+<section id="slide-orgcab6471" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgcab6471">Netscape Navigator (1994)</h3>
+<p>
+Marc founded Netscape and released the Netscape Navigator to the public
+</p>
+
+<div id="org7d66664" class="figure">
+<p><img src="./NetscapeNavigator.png" alt="NetscapeNavigator.png" width="70%" height="70%" />
+</p>
+</div>
+</section>
+<section id="slide-org82d664e" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org82d664e">The Browser Wars</h3>
+<p>
+Microsoft licensed early Mosaic code and created the Internet Explorer, which started a bitter rivalry between Netscape and Microsoft
+</p>
+
+<div id="orgd92b6c1" class="figure">
+<p><img src="./ie.png" alt="ie.png" width="60%" height="60%" />
+</p>
+</div>
+</section>
+<section id="slide-org82f9808" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org82f9808">Notable Developments</h4>
+<ul>
+<li>Netscape invented Javascript</li>
+<li>Microsoft invented CSS</li>
+
+</ul>
+</section>
+<section id="slide-org5ff0423" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org5ff0423">The Lawsuit</h4>
+<p>
+By 1999, IE had 99% of the browser market share. This led to a high-profile anti-trust lawsuit against Microsoft.
+Later, Netscape open-sourced the code for Netscape Navigator, which then became Firefox.
+</p>
+</section>
+<section id="slide-org340a349" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org340a349">Google Chrome (2008)</h3>
+<p>
+Google launched its Chrome browser in 2008, and since then it has come to dominate the browser market.
+</p>
+
+<div id="org13ff9de" class="figure">
+<p><img src="./chrome.png" alt="chrome.png" width="70%" height="70%" />
+</p>
+</div>
+</section>
+<section id="slide-org4f0c466" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org4f0c466">Newer Browsers</h3>
+<p>
+An interesting thing to note is that newer browsers like Opera, Vivaldi, Edge and Brave are also based on Chromium like Chrome. Firefox and Safari are the only two popular browsers not based on Chromium.
+</p>
+
+<div id="org6dd10d7" class="figure">
+<p><img src="./chromium.png" alt="chromium.png" width="60%" height="60%" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-orgfb6efae" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgfb6efae">A Quick Introduction to Privacy</h2>
+<div class="outline-text-2" id="text-orgfb6efae">
+</div>
+</section>
+<section id="slide-orge0bac7f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orge0bac7f">What is Privacy?</h3>
+<p>
+Privacy is the right to have control over your personal information.
+</p>
+
+<div id="orgab0f47d" class="figure">
+<p><img src="./privacy.jpg" alt="privacy.jpg" width="70%" height="70%" />
+</p>
+</div>
+</section>
+<section id="slide-orgb203e36" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgb203e36">Your Data is Valuable</h3>
+<p>
+The Global Data Market is worth at least $100 Billion in 2023, and is projected to grow to $300 billion by 2030!
+</p>
+</section>
+<section id="slide-org2981f6f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org2981f6f">Why Should You Care?</h3>
+<ul>
+<li>Misuse by Corporations</li>
+<li>Preventing Theft</li>
+<li>Freedom of Expression</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgbb41b15" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgbb41b15">The Current Browser Ecosystem</h2>
+<div class="outline-text-2" id="text-orgbb41b15">
+</div>
+</section>
+<section id="slide-org454b6a6" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org454b6a6">Chromium and Manifest V3</h3>
+<p>
+Manifest V3 will make it not possible to use UBO and other content filters on chromium-based browsers.
+<a href="https://www.eff.org/deeplinks/2021/12/googles-manifest-v3-still-hurts-privacy-security-innovation">https://www.eff.org/deeplinks/2021/12/googles-manifest-v3-still-hurts-privacy-security-innovation</a>
+</p>
+
+<div id="org70a4013" class="figure">
+<p><img src="./mv3.png" alt="mv3.png" width="70%" height="70%" />
+</p>
+</div>
+</section>
+<section id="slide-org41ec927" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org41ec927">Comparison</h3>
+<p>
+Cool site that compares most browsers on privacy-related metrics:
+<a href="https://privacytests.org/">https://privacytests.org/</a>
+</p>
+</section>
+<section id="slide-org1fe247a" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org1fe247a">Firefox Forks</h3>
+<p>
+Protip: Use Profiles and Containers!
+</p>
+</section>
+<section id="slide-org652d01e" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org652d01e">Librewolf</h4>
+<p>
+<a href="https://librewolf.net/">https://librewolf.net/</a>
+<img src="./librewolf.png" alt="librewolf.png" />
+</p>
+</section>
+<section id="slide-orgc2dbfb8" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgc2dbfb8">Arkenfox</h4>
+<p>
+<a href="https://github.com/arkenfox/user.js/">https://github.com/arkenfox/user.js/</a>
+</p>
+</section>
+<section id="slide-orgba72ec1" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgba72ec1">Betterfox</h4>
+<p>
+<a href="https://github.com/yokoffing/Betterfox">https://github.com/yokoffing/Betterfox</a>
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orged0eb49" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orged0eb49">Extensions for Privacy</h2>
+<div class="outline-text-2" id="text-orged0eb49">
+</div>
+</section>
+<section id="slide-org6cecaba" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org6cecaba">uBlock Origin</h3>
+<p>
+Don't forget to enable advanced user options!
+<a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/">https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/</a>
+</p>
+
+<div id="org7856bf1" class="figure">
+<p><img src="./ubo.png" alt="ubo.png" width="70%" height="70%" />
+</p>
+</div>
+</section>
+<section id="slide-orgf9f2553" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgf9f2553">Decentraleyes</h3>
+<p>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/">https://addons.mozilla.org/en-US/firefox/addon/decentraleyes/</a>
+<img src="./decentraleyes.png" alt="decentraleyes.png" />
+</p>
+</section>
+<section id="slide-org0c20d4d" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org0c20d4d">Fingerprinting</h3>
+<p>
+Fingerprinting: detecting people based on how unique their browser is
+</p>
+
+<div id="org51e514d" class="figure">
+<p><img src="./fingerprinting.jpg" alt="fingerprinting.jpg" width="70%" height="70%" />
+</p>
+</div>
+</section>
+<section id="slide-orgbadbf26" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orgbadbf26">UserAgent Spoofing</h4>
+<p>
+<a href="https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/">https://addons.mozilla.org/en-US/firefox/addon/user-agent-string-switcher/</a>
+</p>
+</section>
+<section id="slide-org4dd7afb" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org4dd7afb">Test it!</h3>
+<p>
+<a href="https://coveryourtracks.eff.org/">https://coveryourtracks.eff.org/</a>
+<img src="./coveryourtracks.jpeg" alt="coveryourtracks.jpeg" />
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org72fef9f" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org72fef9f">Going One Level Deeper - Why?</h2>
+<div class="outline-text-2" id="text-org72fef9f">
+</div>
+</section>
+<section id="slide-orgae9bddf" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgae9bddf">OPSEC</h3>
+<p>
+Short for Operation Security. This determines how easy and how likely you are to be discovered.
+</p>
+</section>
+<section id="slide-orged9d460" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orged9d460">General tips</h4>
+</section>
+<section id="slide-org6a6be0b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org6a6be0b">The layers above are as secure as the layers below</h4>
+
+<div id="org958bd6c" class="figure">
+<p><img src="./jenga.jpg" alt="jenga.jpg" width="60%" height="60%" />
+</p>
+</div>
+</section>
+<section id="slide-org4908bbe" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org4908bbe">The more apps/sites you use, the wider your digital footprint</h4>
+
+<div id="orgd13db43" class="figure">
+<p><img src="./footprint.png" alt="footprint.png" />
+</p>
+</div>
+</section>
+<section id="slide-orgf27759c" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgf27759c">Threat Model</h3>
+<ol>
+<li>What do you need to protect?</li>
+<li>Who do you need to protect it from?</li>
+<li>What are your vulnerabilities?</li>
+<li>What are the risks?</li>
+<li>What are the countermeasures?</li>
+
+</ol>
+
+<p>
+In short: Know <i>what</i> to protect and know <i>how</i> to protect it
+</p>
+</section>
+</section>
+<section>
+<section id="slide-orgee1e16b" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="orgee1e16b">Communications</h2>
+<div class="outline-text-2" id="text-orgee1e16b">
+</div>
+</section>
+<section id="slide-org8da6960" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org8da6960">VPN</h3>
+<p>
+Recommended: Mullavad
+</p>
+
+<div id="org663d0d4" class="figure">
+<p><img src="./mullvad.png" alt="mullvad.png" width="60%" height="60%" />
+</p>
+</div>
+</section>
+<section id="slide-orge2183a5" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orge2183a5">E-mail</h3>
+<p>
+Recommended: Tutanota
+<img src="./tutanota.webp" alt="tutanota.webp" />
+</p>
+</section>
+<section id="slide-org37e4638" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org37e4638">Messaging</h3>
+<p>
+AVOID SMS!
+</p>
+
+<div id="org93df309" class="figure">
+<p><img src="./SMS.jpg" alt="SMS.jpg" width="60%" height="60%" />
+</p>
+</div>
+</section>
+<section id="slide-org9a5e1cd" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="org9a5e1cd">Simple</h4>
+<p>
+Signal, Briar or Jami
+<img src="./signal.png" alt="signal.png" />
+</p>
+</section>
+<section id="slide-orga94c587" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h4 id="orga94c587">Advanced</h4>
+<p>
+Matrix, IRC or XMPP
+<img src="./matrix.svg" alt="matrix.svg" class="org-svg" />
+</p>
+</section>
+<section id="slide-org70153f4" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org70153f4">Password Management</h3>
+<p>
+KeepassXC, gnupass
+<img src="./keepassxc.png" alt="keepassxc.png" />
+</p>
+</section>
+</section>
+<section>
+<section id="slide-org463e616" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org463e616">Tor</h2>
+
+<div id="orga9a8e39" class="figure">
+<p><img src="./warning.svg" alt="warning.svg" class="org-svg" />
+</p>
+</div>
+</section>
+<section id="slide-orgcc6b659" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgcc6b659">Welcome to the Dark Net</h3>
+<p>
+Download the tor browser bundle from your package manager
+</p>
+
+<div id="org48254ed" class="figure">
+<p><img src="./tor.png" alt="tor.png" width="70%" height="70%" />
+</p>
+</div>
+</section>
+<section id="slide-org2306651" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org2306651">Where to get links?</h3>
+<ul>
+<li><a href="https://tor.taxi">https://tor.taxi</a></li>
+<li><a href="https://dark.fail">https://dark.fail</a></li>
+<li>Search Engines: Phobos or Haystak</li>
+
+</ul>
+</section>
+<section id="slide-orgf64b06d" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orgf64b06d">How does it work?</h3>
+
+<div id="orga0fe308" class="figure">
+<p><img src="./how tor works.png" alt="how tor works.png" />
+</p>
+</div>
+</section>
+</section>
+<section>
+<section id="slide-org7cbba84" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h2 id="org7cbba84">Bonus: TAILS and Qubes</h2>
+<p>
+These are Operating Systems geared towards privacy
+</p>
+</section>
+<section id="slide-org29f6ef5" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="org29f6ef5">TAILS</h3>
+<p>
+<a href="https://tails.net/">https://tails.net/</a>
+<img src="./tails.png" alt="tails.png" />
+</p>
+</section>
+<section id="slide-orge76c197" data-background="./sos.png" data-background-size="100px" data-background-position="1% 96%" data-background-opacity="0.4">
+<h3 id="orge76c197">Qubes</h3>
+<p>
+<a href="https://www.qubes-os.org/intro/">https://www.qubes-os.org/intro/</a>
+</p>
+
+<div id="orgf61ed77" class="figure">
+<p><img src="./qubes.png" alt="qubes.png" width="80%" height="80%" />
+</p>
+</div>
+</section>
+</section>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'https://cdn.jsdelivr.net/npm/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+
+});
+
+</script>
+</body>
+</html>
